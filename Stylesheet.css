@@ -1,0 +1,336 @@
+* {
+    box-sizing: border-box;
+}
+
+
+
+.navv {
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+    display: flex;
+    background-color: red;
+    position: fixed;
+    top: 0;
+    scroll-behavior: smooth;
+
+}
+
+.teacher-pic {
+    width: 170px;
+    height: 220px;
+    border-radius: 0;
+    object-fit: cover;
+}
+
+
+
+.logo {
+    align-content: center;
+    margin-right: 20px;
+    color: white;
+}
+
+.navigation {}
+
+.logo h1 {
+    margin-left: 20px;
+}
+
+.navv img {
+    width: 200px;
+
+}
+
+.navv ul {
+    margin: 0;
+    padding-left: 0%;
+    margin-left: 600px;
+    scroll-behavior: smooth;
+
+    align-content: center;
+}
+
+.user-img {
+    border-radius: 10px;
+    width: 70%;
+}
+
+
+.navi {
+    right: 0;
+}
+
+.navv li {
+    list-style-type: none;
+    margin-left: 0;
+    display: inline;
+    scroll-behavior: smooth;
+
+
+}
+
+.navv li a {
+
+
+    text-decoration: none;
+    color: white;
+    margin-right: 30px;
+
+
+}
+
+html {
+    scroll-behavior: smooth;
+
+}
+
+li a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.section {
+    margin-top: 100px;
+}
+
+.quest {
+    font-size: larger;
+    color: red;
+}
+
+/* Introduction Section - Red Theme Redesign */
+.introduction {
+    padding: 5rem 0;
+    background-color: #c82333; /* Deep Red Background */
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 15px 15px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    margin-top: 56px; /* Adjust for fixed navbar height */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.introduction-text h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.introduction-text h1 .text-danger {
+    color: #ffdd57 !important; /* Soft yellow for brand highlight */
+}
+
+.introduction-text .lead {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+}
+
+.introduction-image-container .user-img {
+    border-radius: 1rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border: 4px solid rgba(255, 255, 255, 0.5);
+}
+
+.cta-buttons .btn {
+    border-radius: 50px;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    border-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.cta-buttons .btn-danger {
+    background-color: #fff;
+    border-color: #fff;
+    color: #c82333;
+}
+
+.cta-buttons .btn-danger:hover {
+    background-color: transparent;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cta-buttons .btn-outline-secondary {
+    border-color: rgba(255, 255, 255, 0.7);
+    color: #fff;
+}
+
+.cta-buttons .btn-outline-secondary:hover {
+    background-color: #fff;
+    color: #c82333;
+}
+
+
+
+
+
+
+
+.service-overlay {
+    background-color: #f8f9fa; /* Clean, light gray background */
+}
+.teacher-card {
+    margin-bottom: 50px;
+    background-color: white;
+    box-shadow: 5px 6px 4px -2px rgba(0, 0, 0, 0.38);
+    -webkit-box-shadow: 5px 6px 4px -2px rgba(0, 0, 0, 0.38);
+    -moz-box-shadow: 5px 6px 4px -2px rgba(0, 0, 0, 0.38);
+
+}
+
+
+
+
+
+
+.other-service {
+    text-align: center;
+}
+
+.other-service-card {
+    padding: 10px;
+    box-shadow: 5px 6px 4px -2px rgba(0, 0, 0, 0.38);
+    -webkit-box-shadow: 5px 6px 4px -2px rgba(0, 0, 0, 0.38);
+    -moz-box-shadow: 5px 6px 4px -2px rgba(0, 0, 0, 0.38);
+    border-radius: 5px;
+    height: 250px;
+    margin-bottom: 30px;
+}
+
+.other-service-card img {
+    width: 100%;
+    max-width: 30%;
+    margin: 20px;
+}
+
+.red {
+    color: red;
+}
+
+/* Contact Section */
+.contact-section {
+    position: relative;
+    background: url('imgs/consul-background.png') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed; /* Parallax effect */
+}
+
+.contact-form-wrapper {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.contact-text {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+.contact-section .form-control {
+    border-radius: 8px;
+    padding: 1.5rem 1rem;
+    border: 1px solid #ced4da;
+}
+
+.contact-section .form-control:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+tr {
+    cursor: pointer;
+    color: black;
+    background-color: white;
+}
+
+
+
+.news-card h5 {
+    margin: 0;
+}
+
+.news-card img {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.note {
+    display: inline-block;
+    background-color: grey;
+    color: white;
+    padding: 0 5px;
+    font-size: small;
+    margin: 0;
+    border-radius: 2px;
+}
+
+.date {
+
+    font-weight: 300;
+}
+
+.news-card button {
+    border: 2px solid green;
+    color: green;
+    background-color: white;
+    padding: 0 10px;
+    font-weight: 600;
+}
+
+.extra-new {
+    margin-bottom: 50px;
+}
+
+.extra-new img {
+    width: 120px;
+    height: 120px;
+}
+
+th {
+    background-color: red;
+    color: white;
+}
+
+hr {
+    border: 1px solid red;
+}
+
+footer {
+    background-color: antiquewhite;
+    text-align: justify;
+    color: rgb(0, 0, 0);
+    padding: 50px;
+}
+
+footer img {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+
+
+.conclu p {
+    line-height: 35px;
+}
+
+.foot-news ul {
+    list-style-type: none;
+    padding-left: 0%;
+}
+
+footer hr {
+    background: gray;
+}

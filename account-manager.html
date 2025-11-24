@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Management</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header class="mb-4">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="introduction.html">
+                    <span style="color: red; font-weight: bold;">APIX</span> ENGLISH
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="management.html">Student</a></li>
+                        <li class="nav-item"><a class="nav-link" href="teacher-manager.html">Teacher</a></li>
+                        <li class="nav-item"><a class="nav-link" href="book-manager.html">Book</a></li>
+                        <li class="nav-item"><a class="nav-link" href="class-manager.html">Class</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="account-manager.html">Account <span class="sr-only">(current)</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="image-manager.html">Images</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+                <h2 class="mb-4">Account Management</h2>
+                <button class="btn btn-success mb-3" data-toggle="modal" data-target="#addAccountModal">
+                    <i class="fa fa-plus"></i> Add New Account
+                </button>
+                <table class="table table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="account-table-body">
+                        <!-- Account data will be loaded here -->
+                    </tbody>
+                </table>
+        </div>
+    </main>
+
+    <!-- Add Account Modal -->
+    <div class="modal fade" id="addAccountModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Account</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="addAccountForm">
+                        <div class="form-group">
+                            <label for="add-email-select">Select Teacher</label>
+                            <select class="form-control" id="add-email-select" required>
+                                <option value="">-- Loading teachers... --</option>
+                                <!-- Teacher options will be loaded here -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="add-password">Password</label>
+                            <input type="password" class="form-control" id="add-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="add-role">Role</label>
+                            <select class="form-control" id="add-role">
+                                <option value="teacher">Teacher</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Account Modal -->
+    <div class="modal fade" id="editAccountModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Account</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="editAccountForm">
+                        <input type="hidden" id="edit-account-id">
+                        <div class="form-group">
+                            <label for="edit-email">Email</label>
+                            <input type="email" class="form-control" id="edit-email" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-role">Role</label>
+                            <select class="form-control" id="edit-role">
+                                <option value="teacher">Teacher</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div class="modal fade" id="changePasswordModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Change Password for <span id="change-password-email"></span></h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="changePasswordForm">
+                        <input type="hidden" id="change-password-account-id">
+                        <div class="form-group">
+                            <label for="new-password">New Password</label>
+                            <input type="password" class="form-control" id="new-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm New Password</label>
+                            <input type="password" class="form-control" id="confirm-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Change Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function loadAccounts() {
+                $.get('/api/accounts', function (accounts) {
+                    const tableBody = $('#account-table-body');
+                    tableBody.empty();
+                    accounts.forEach(acc => {
+                        tableBody.append(`
+                            <tr>
+                                <td>${acc.email}</td>
+                                <td>${acc.role}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning edit-btn" data-id="${acc.id}" data-email="${acc.email}" data-role="${acc.role}">Edit</button>
+                                    <button class="btn btn-sm btn-info change-password-btn" data-id="${acc.id}" data-email="${acc.email}">Change Password</button>
+                                    <button class="btn btn-sm btn-danger delete-btn" data-id="${acc.id}">Delete</button>
+                                </td>
+                            </tr>
+                        `);
+                    });
+                });
+            }
+
+            function loadTeachersWithoutAccount() {
+                const select = $('#add-email-select');
+                select.html('<option value="">-- Loading teachers... --</option>');
+                $.get('/api/teachers/no-account', function(teachers) {
+                    select.empty();
+                    if (teachers.length === 0) {
+                        select.append('<option value="">No teachers available to create accounts for</option>');
+                    } else {
+                        select.append('<option value="">-- Select a Teacher --</option>');
+                        teachers.forEach(teacher => {
+                            select.append(`<option value="${teacher.email}">${teacher.full_name} (${teacher.email})</option>`);
+                        });
+                    }
+                });
+            }
+
+            // Load teachers when the "Add Account" modal is shown
+            $('#addAccountModal').on('show.bs.modal', function () {
+                loadTeachersWithoutAccount();
+            });
+
+            $('#addAccountForm').submit(function (e) {
+                e.preventDefault();
+                $.post('/api/accounts/add', {
+                    email: $('#add-email-select').val(),
+                    password: $('#add-password').val(),
+                    role: $('#add-role').val()
+                }, function () {
+                    $('#addAccountModal').modal('hide').find('form')[0].reset();
+                    loadAccounts();
+                }).fail(err => alert(err.responseJSON.message));
+            });
+
+            $('#account-table-body').on('click', '.edit-btn', function () {
+                $('#edit-account-id').val($(this).data('id'));
+                $('#edit-email').val($(this).data('email'));
+                $('#edit-role').val($(this).data('role'));
+                $('#editAccountModal').modal('show');
+            });
+
+            $('#editAccountForm').submit(function (e) {
+                e.preventDefault();
+                $.post('/api/accounts/update', {
+                    id: $('#edit-account-id').val(),
+                    role: $('#edit-role').val()
+                }, function () {
+                    $('#editAccountModal').modal('hide');
+                    loadAccounts();
+                }).fail(err => alert(err.responseJSON.message));
+            });
+
+            // Show change password modal
+            $('#account-table-body').on('click', '.change-password-btn', function () {
+                const accountId = $(this).data('id');
+                const accountEmail = $(this).data('email');
+                $('#change-password-account-id').val(accountId);
+                $('#change-password-email').text(accountEmail);
+                $('#changePasswordModal').modal('show');
+            });
+
+            // Handle change password submission
+            $('#changePasswordForm').submit(function(e) {
+                e.preventDefault();
+                const newPassword = $('#new-password').val();
+                const confirmPassword = $('#confirm-password').val();
+
+                if (newPassword !== confirmPassword) {
+                    alert("Passwords do not match!");
+                    return;
+                }
+
+                $.post('/api/accounts/change-password', { id: $('#change-password-account-id').val(), password: newPassword }, function(response) {
+                    alert(response.message);
+                    $('#changePasswordModal').modal('hide').find('form')[0].reset();
+                }).fail(err => alert(err.responseJSON.message));
+            });
+
+            $('#account-table-body').on('click', '.delete-btn', function () {
+                if (confirm('Are you sure you want to delete this account?')) {
+                    $.post('/api/accounts/delete', { id: $(this).data('id') }, function () {
+                        loadAccounts();
+                    }).fail(err => alert(err.responseJSON.message));
+                }
+            });
+
+            loadAccounts();
+        });
+    </script>
+</body>
+
+</html>
