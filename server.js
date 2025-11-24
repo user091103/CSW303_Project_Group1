@@ -8,10 +8,12 @@ const bcrypt = require('bcrypt');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+
+
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "Khanhuh!@#09112003",
     database: "csw303",
     insecureAuth: true
 });
@@ -19,7 +21,7 @@ var con = mysql.createConnection({
 const galleryStorage = multer.diskStorage({
     destination: function (req, file, cb) {
         const dir = 'uploads/gallery';
-        if (!fs.existsSync(dir)){
+        if (!fs.existsSync(dir)) {
             fs.mkdirSync(dir, { recursive: true });
         }
         cb(null, dir);
@@ -423,7 +425,7 @@ app.post('/addStaff', upload.single('image'), (req, res) => {
     con.query(sql, [full_name, phone, email, qualification, specialty, experience_years, availability, imgPathUrl], (err, result) => {
         if (err) {
             console.error('Database error:', err); // Log detailed error
-            if (req.file) { fs.unlink(req.file.path, () => {}); } // Delete uploaded file if DB save fails
+            if (req.file) { fs.unlink(req.file.path, () => { }); } // Delete uploaded file if DB save fails
             return res.status(500).send('Database error.');
         }
         res.redirect('/teacher-manager.html')
