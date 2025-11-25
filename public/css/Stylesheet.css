@@ -102,13 +102,15 @@ li a:hover {
 /* Introduction Section - Red Theme Redesign */
 .introduction {
     padding: 5rem 0;
-    background-color: #c82333; /* Deep Red Background */
+    background-color: #c82333;
+    /* Deep Red Background */
     background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 15px 15px;
     color: white;
     position: relative;
     overflow: hidden;
-    margin-top: 56px; /* Adjust for fixed navbar height */
+    margin-top: 56px;
+    /* Adjust for fixed navbar height */
 }
 
 .hero-content {
@@ -123,7 +125,8 @@ li a:hover {
 }
 
 .introduction-text h1 .text-danger {
-    color: #ffdd57 !important; /* Soft yellow for brand highlight */
+    color: #ffdd57 !important;
+    /* Soft yellow for brand highlight */
 }
 
 .introduction-text .lead {
@@ -176,8 +179,10 @@ li a:hover {
 
 
 .service-overlay {
-    background-color: #f8f9fa; /* Clean, light gray background */
+    background-color: #f8f9fa;
+    /* Clean, light gray background */
 }
+
 .teacher-card {
     margin-bottom: 50px;
     background-color: white;
@@ -219,9 +224,10 @@ li a:hover {
 /* Contact Section */
 .contact-section {
     position: relative;
-    background: url('imgs/consul-background.png') no-repeat center center;
+    background: url('/images/consul-background.png') no-repeat center center;
     background-size: cover;
-    background-attachment: fixed; /* Parallax effect */
+    background-attachment: fixed;
+    /* Parallax effect */
 }
 
 .contact-form-wrapper {

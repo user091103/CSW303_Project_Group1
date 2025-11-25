@@ -9,7 +9,6 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -75,59 +74,38 @@ function isAdmin(req, res, next) {
 }
 
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use('/uploads', express.static('uploads'));
+app.use(express.static('public'));
 app.get('/login', (req, res) => {
-    createReadStream('login.html').pipe(res)
-})
-app.get('/imgs/CSE408_background.png', (req, res) => {
-    createReadStream('imgs/CSE408_background.png').pipe(res)
-})
-app.get('/imgs/consul-background.png', (req, res) => {
-    createReadStream('imgs/consul-background.png').pipe(res)
-})
-app.get('/imgs/consultant.png', (req, res) => {
-    createReadStream('imgs/consultant.png').pipe(res)
-})
-app.get('/imgs/introduction.png', (req, res) => {
-    createReadStream('imgs/introduction.png').pipe(res)
-})
-app.get('/imgs/user-cover.png', (req, res) => {
-    createReadStream('imgs/user-cover.png').pipe(res)
-})
-app.get('/style.css', (req, res) => {
-    createReadStream('style.css').pipe(res)
-})
-app.get('/stylesheet.css', (req, res) => {
-    createReadStream('stylesheet.css').pipe(res)
-})
+    res.sendFile(__dirname + '/views/login.html');
+});
+
 app.get('/admin-home', isAuthenticated, isAdmin, (req, res) => {
-    createReadStream('./admin-home.html').pipe(res)
-})
+    res.sendFile(__dirname + '/views/admin-home.html');
+});
 app.get('/admin-student-manager.html', isAuthenticated, isAdmin, (req, res) => {
-    createReadStream('./admin-student-manager.html').pipe(res)
+    res.sendFile(__dirname + '/views/admin-student-manager.html');
 })
 app.get('/admin-teacher-manager.html', isAuthenticated, isAdmin, (req, res) => {
-    createReadStream('./admin-teacher-manager.html').pipe(res)
+    res.sendFile(__dirname + '/views/admin-teacher-manager.html');
 })
 app.get('/admin-book-manager.html', isAuthenticated, isAdmin, (req, res) => {
-    createReadStream('admin-book-manager.html').pipe(res)
+    res.sendFile(__dirname + '/views/admin-book-manager.html');
 })
 app.get('/admin-class-manager.html', isAuthenticated, isAdmin, (req, res) => {
-    createReadStream('admin-class-manager.html').pipe(res)
+    res.sendFile(__dirname + '/views/admin-class-manager.html');
 })
 app.get('/admin-account-manager.html', isAuthenticated, isAdmin, (req, res) => {
-    createReadStream('admin-account-manager.html').pipe(res)
+    res.sendFile(__dirname + '/views/admin-account-manager.html');
 })
 app.get('/admin-image-manager.html', isAuthenticated, isAdmin, (req, res) => {
-    createReadStream('admin-image-manager.html').pipe(res)
+    res.sendFile(__dirname + '/views/admin-image-manager.html');
 })
-app.get('/teacher-dashboard.html', isAuthenticated, isTeacher, (req, res) => {
-    createReadStream('teacher-dashboard.html').pipe(res);
+app.get('/teacher-home.html', isAuthenticated, isTeacher, (req, res) => {
+    res.sendFile(__dirname + '/views/teacher-home.html');
 });
 app.get('/', (req, res) => {
-    createReadStream('users.html').pipe(res)
-    // res.render({ username: req.session.email });
-})
+    res.sendFile(path.join(__dirname, 'views/introduction.html'));
+});
 app.get('/logout', (req, res) => {
     res.clearCookie('user');
     req.session.destroy(() => {
@@ -155,29 +133,6 @@ app.get('/api/teacher/class/:class_code/students', isAuthenticated, isTeacher, (
     });
 });
 
-app.get('/api/student/:id/grades', isAuthenticated, isTeacher, (req, res) => {
-    const { id } = req.params;
-    const sql = 'SELECT * FROM grades WHERE student_id = ? ORDER BY date_added DESC';
-    con.query(sql, [id], (err, results) => {
-        if (err) {
-            return res.status(500).json({ message: 'Database error fetching grades.' });
-        }
-        res.json(results);
-    });
-});
-
-app.post('/api/grades/add', isAuthenticated, isTeacher, (req, res) => {
-    const { student_id, grade_name, score } = req.body;
-    const sql = 'INSERT INTO grades (student_id, grade_name, score) VALUES (?, ?, ?)';
-    con.query(sql, [student_id, grade_name, score], (err, result) => {
-        if (err) {
-            console.error('Database error:', err);
-            return res.status(500).json({ message: 'Error adding grade.' });
-        }
-        res.json({ message: 'Grade added successfully!' });
-    });
-});
-
 app.post('/api/grades/update', isAuthenticated, isTeacher, (req, res) => {
     const { grade_id, grade_name, score } = req.body;
     const sql = 'UPDATE grades SET grade_name = ?, score = ? WHERE grade_id = ?';
@@ -185,18 +140,6 @@ app.post('/api/grades/update', isAuthenticated, isTeacher, (req, res) => {
         if (err) {
             console.error('Database error:', err);
             return res.status(500).json({ message: 'Error updating grade.' });
-        }
-        res.json({ message: 'Grade updated successfully!' });
-    });
-});
-
-app.post('/api/grades/delete', isAuthenticated, isTeacher, (req, res) => {
-    const { grade_id } = req.body;
-    const sql = 'DELETE FROM grades WHERE grade_id = ?';
-    con.query(sql, [grade_id], (err, result) => {
-        if (err) {
-            console.error('Database error:', err);
-            return res.status(500).json({ message: 'Error deleting grade.' });
         }
         res.json({ message: 'Grade updated successfully!' });
     });
@@ -222,18 +165,6 @@ app.post('/api/grades/add', isAuthenticated, isTeacher, (req, res) => {
             return res.status(500).json({ message: 'Error adding grade.' });
         }
         res.json({ message: 'Grade added successfully!', newGradeId: result.insertId });
-    });
-});
-
-app.post('/api/grades/update', isAuthenticated, isTeacher, (req, res) => {
-    const { grade_id, grade_name, score } = req.body;
-    const sql = 'UPDATE grades SET grade_name = ?, score = ? WHERE grade_id = ?';
-    con.query(sql, [grade_name, score, grade_id], (err, result) => {
-        if (err) {
-            console.error('Database error:', err);
-            return res.status(500).json({ message: 'Error updating grade.' });
-        }
-        res.json({ message: 'Grade updated successfully!' });
     });
 });
 
@@ -319,7 +250,7 @@ app.get('/getData', (req, res) => {
         if (err) throw err;
         const totalItems = results[0].count;
         const totalPages = Math.ceil(totalItems / limit);
-        con.query(`SELECT * FROM students LIMIT ${limit} OFFSET ${offset}`, (err, students) => {
+        con.query('SELECT * FROM students LIMIT ? OFFSET ?', [limit, offset], (err, students) => {
             if (err) throw err;
             res.json({
                 page,
@@ -355,8 +286,7 @@ app.get('/getDatasort', (req, res) => {
 
 app.post('/removestudent', (req, res) => {
     const id = req.body.id;
-    const query = `DELETE FROM students
-WHERE id = ?;`; // replace with your database name
+    const query = `DELETE FROM students WHERE id = ?;`; // replace with your database name
     con.query(query, [id], (err, result) => {
         if (err) {
             console.error('Error deleting database:', err);
@@ -560,7 +490,7 @@ app.post('/userlogin', (req, res) => {
 
                     // Redirect based on role
                     if (userRecord.role === 'teacher') {
-                        return res.redirect('/teacher-dashboard.html');
+                        return res.redirect('/teacher-home.html');
                     }
                     // Default to admin dashboard
                     return res.redirect('/admin-home');

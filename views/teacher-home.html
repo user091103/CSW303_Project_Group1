@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teacher Dashboard - Student Grades</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/teacher-dashboard.css">
+    <link rel="stylesheet" type="text/css" href="css/teacher-dashboard.css">
 </head>
+
 <body>
 
     <nav class="navbar navbar-dark bg-danger">
@@ -127,7 +129,7 @@
         }
 
         function showGradeDetails(studentId, studentName) {
-            $.get(`/api/student/${studentId}/grades`, function(studentGrades) {
+            $.get(`/api/student/${studentId}/grades`, function (studentGrades) {
                 let gradeRows = '';
                 if (studentGrades.length > 0) {
                     studentGrades.forEach(grade => {
@@ -164,29 +166,29 @@
                     </form>
                 `;
                 $('#details-content').html(detailsHtml);
-            }).fail(function() {
+            }).fail(function () {
                 alert("Error: Could not fetch student grades.");
             });
         }
 
         // --- MAIN LOGIC ---
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Initial load
             showClasses();
 
             // Event Delegation for dynamic elements
-            $('#left-panel').on('click', '.class-item', function(e) {
+            $('#left-panel').on('click', '.class-item', function (e) {
                 e.preventDefault();
                 const classId = $(this).data('class-id');
                 const className = $(this).find('h6').text();
                 showStudents(classId, className);
             });
 
-            $('#left-panel').on('click', '#back-to-classes', function() {
+            $('#left-panel').on('click', '#back-to-classes', function () {
                 showClasses();
             });
 
-            $('#left-panel').on('click', '.student-item', function(e) {
+            $('#left-panel').on('click', '.student-item', function (e) {
                 e.preventDefault();
                 $('#left-panel-list a').removeClass('active');
                 $(this).addClass('active');
@@ -197,22 +199,22 @@
             });
 
             // Handle ADD Grade
-            $('#details-content').on('submit', '#add-grade-form', function(e) {
+            $('#details-content').on('submit', '#add-grade-form', function (e) {
                 e.preventDefault();
                 const formData = $(this).serialize();
                 const studentId = $('input[name="student_id"]').val();
                 const studentName = $('#details-content h4 strong').text();
 
-                $.post('/api/grades/add', formData, function(response) {
+                $.post('/api/grades/add', formData, function (response) {
                     alert("Success!");
                     showGradeDetails(studentId, studentName); // Refresh the list
-                }).fail(function() {
+                }).fail(function () {
                     alert("Error: Could not add grade.");
                 });
             });
 
             // Handle Grade EDIT
-            $('#details-content').on('click', '.edit-grade-btn', function() {
+            $('#details-content').on('click', '.edit-grade-btn', function () {
                 const row = $(this).closest('tr');
                 const gradeId = row.data('grade-id');
                 const gradeName = row.find('td:eq(0)').text();
@@ -238,7 +240,7 @@
             });
 
             // Handle Grade SAVE
-            $('#details-content').on('click', '.save-grade-btn', function() {
+            $('#details-content').on('click', '.save-grade-btn', function () {
                 const row = $(this).closest('tr');
                 const gradeId = row.data('grade-id'); // Get gradeId from the original row's data
                 const newGradeName = row.find('input:eq(0)').val();
@@ -246,37 +248,38 @@
                 const studentId = $('input[name="student_id"]').val();
                 const studentName = $('#details-content h4 strong').text();
 
-                $.post('/api/grades/update', { grade_id: gradeId, grade_name: newGradeName, score: newScore }, function(response) {
+                $.post('/api/grades/update', { grade_id: gradeId, grade_name: newGradeName, score: newScore }, function (response) {
                     alert("Success!");
                     showGradeDetails(studentId, studentName); // Refresh
-                }).fail(function() {
+                }).fail(function () {
                     alert("Error: Could not update grade.");
                 });
             });
 
             // Handle Grade CANCEL edit
-            $('#details-content').on('click', '.cancel-edit-btn', function() {
+            $('#details-content').on('click', '.cancel-edit-btn', function () {
                 const studentId = $('input[name="student_id"]').val();
                 const studentName = $('#details-content h4 strong').text();
                 showGradeDetails(studentId, studentName); // Just re-render to cancel
             });
 
             // Handle Grade DELETE
-            $('#details-content').on('click', '.delete-grade-btn', function() {
+            $('#details-content').on('click', '.delete-grade-btn', function () {
                 if (!confirm("Are you sure you want to delete this grade?")) return;
 
                 const gradeId = $(this).closest('tr').data('grade-id');
                 const studentId = $('input[name="student_id"]').val();
                 const studentName = $('#details-content h4 strong').text();
 
-                $.post('/api/grades/delete', { grade_id: gradeId }, function(response) {
+                $.post('/api/grades/delete', { grade_id: gradeId }, function (response) {
                     alert("Success!");
                     showGradeDetails(studentId, studentName); // Refresh
-                }).fail(function() {
+                }).fail(function () {
                     alert("Error: Could not delete grade.");
                 });
             });
         });
     </script>
 </body>
+
 </html>

@@ -13,7 +13,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url(imgs/CSE408_background.png);
+    background-image: url('/images/CSE408_background.png');
 }
 
 
@@ -417,7 +417,7 @@ tr:hover {
 .contact-section {
     position: relative;
     padding: 8rem 0;
-    background: url('imgs/consul-background.png') no-repeat center center;
+    background: url('/images/consul-background.png') no-repeat center center;
     background-size: cover;
     overflow: hidden;
     transition: transform 0.4s ease-out;
