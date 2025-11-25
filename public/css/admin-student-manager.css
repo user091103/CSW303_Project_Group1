@@ -1,0 +1,23 @@
+body {
+    background-color: #f8f9fa;
+}
+
+main {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.card {
+    margin-bottom: 1.5rem;
+}
+
+.form-scroll {
+    max-height: 450px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
