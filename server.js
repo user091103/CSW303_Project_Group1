@@ -100,26 +100,26 @@ app.get('/style.css', (req, res) => {
 app.get('/stylesheet.css', (req, res) => {
     createReadStream('stylesheet.css').pipe(res)
 })
-app.get('/introduction', isAuthenticated, isAdmin, (req, res) => {
-    createReadStream('./introduction.html').pipe(res)
+app.get('/admin-home', isAuthenticated, isAdmin, (req, res) => {
+    createReadStream('./admin-home.html').pipe(res)
 })
-app.get('/management.html', isAuthenticated, isAdmin, (req, res) => {
-    createReadStream('./management.html').pipe(res)
+app.get('/admin-student-manager.html', isAuthenticated, isAdmin, (req, res) => {
+    createReadStream('./admin-student-manager.html').pipe(res)
 })
-app.get('/teacher-manager.html', isAuthenticated, isAdmin, (req, res) => {
-    createReadStream('./teacher-manager.html').pipe(res)
+app.get('/admin-teacher-manager.html', isAuthenticated, isAdmin, (req, res) => {
+    createReadStream('./admin-teacher-manager.html').pipe(res)
 })
-app.get('/book-manager.html', isAuthenticated, isAdmin, (req, res) => {
-    createReadStream('book-manager.html').pipe(res)
+app.get('/admin-book-manager.html', isAuthenticated, isAdmin, (req, res) => {
+    createReadStream('admin-book-manager.html').pipe(res)
 })
-app.get('/class-manager.html', isAuthenticated, isAdmin, (req, res) => {
-    createReadStream('class-manager.html').pipe(res)
+app.get('/admin-class-manager.html', isAuthenticated, isAdmin, (req, res) => {
+    createReadStream('admin-class-manager.html').pipe(res)
 })
-app.get('/account-manager.html', isAuthenticated, isAdmin, (req, res) => {
-    createReadStream('account-manager.html').pipe(res)
+app.get('/admin-account-manager.html', isAuthenticated, isAdmin, (req, res) => {
+    createReadStream('admin-account-manager.html').pipe(res)
 })
-app.get('/image-manager.html', isAuthenticated, isAdmin, (req, res) => {
-    createReadStream('image-manager.html').pipe(res)
+app.get('/admin-image-manager.html', isAuthenticated, isAdmin, (req, res) => {
+    createReadStream('admin-image-manager.html').pipe(res)
 })
 app.get('/teacher-dashboard.html', isAuthenticated, isTeacher, (req, res) => {
     createReadStream('teacher-dashboard.html').pipe(res);
@@ -380,7 +380,7 @@ app.post('/addStudent', (req, res) => {
     con.query(query, [lastName, fisrtName, tele, date, classname, teacher, grade], (err, result) => {
         if (err) throw err;
         console.log('User registered:', result.insertId);
-        res.redirect('/management.html');
+        res.redirect('/admin-student-manager.html');
     });
 })
 app.post('/Updategrade', (req, res) => {
@@ -390,7 +390,7 @@ app.post('/Updategrade', (req, res) => {
     con.query(query, [grade, ID], (err, result) => {
         if (err) throw err;
         console.log('User registered:', result.insertId);
-        res.redirect('/management.html');
+        res.redirect('/admin-student-manager.html');
     });
 })
 
@@ -419,7 +419,7 @@ app.post('/addStaff', upload.single('image'), (req, res) => {
             if (req.file) { fs.unlink(req.file.path, () => { }); } // Delete uploaded file if DB save fails
             return res.status(500).send('Database error.');
         }
-        res.redirect('/teacher-manager.html')
+        res.redirect('/admin-teacher-manager.html')
     });
 })
 
@@ -563,7 +563,7 @@ app.post('/userlogin', (req, res) => {
                         return res.redirect('/teacher-dashboard.html');
                     }
                     // Default to admin dashboard
-                    return res.redirect('/introduction');
+                    return res.redirect('/admin-home');
                 });
 
             } else {
@@ -580,7 +580,7 @@ app.post('/api/images/upload', isAuthenticated, isAdmin, uploadGallery.single('g
     if (!req.file) {
         return res.status(400).send('No file uploaded.');
     }
-    res.redirect('/image-manager.html');
+    res.redirect('/admin-image-manager.html');
 });
 
 app.get('/api/images', (req, res) => {
