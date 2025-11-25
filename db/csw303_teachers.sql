@@ -60,25 +60,25 @@ INSERT INTO
     `teachers`
 VALUES (
         1,
-        'vinh ho',
+        'Violet Dane',
         '0366482922',
-        'vinhvinh1234555@gmail.com',
+        'teacher@gmail.com',
         'TESOL',
         'IELTS',
         4,
         'Full-time',
-        '/uploads/1763828765907.jpg'
+        '/uploads/employees/violet_dane.jpg'
     ),
     (
         2,
-        'John Wick',
+        'John Doe',
         '0987654321',
-        'teacher@apix.com',
+        'teacher@gmail.com',
         'TESOL',
         'IELTS Speaking',
         10,
         'Full-time',
-        '/uploads/1763831192283.jpg'
+        '/uploads/employees/john_doe.jpg'
     );
 /*!40000 ALTER TABLE `teachers` ENABLE KEYS */
 ;
