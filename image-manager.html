@@ -12,12 +12,14 @@
         .gallery-img-container {
             position: relative;
         }
+
         .gallery-img {
             width: 100%;
             height: 200px;
             object-fit: cover;
             border-radius: 5px;
         }
+
         .delete-img-btn {
             position: absolute;
             top: 10px;
@@ -27,7 +29,31 @@
 </head>
 
 <body>
-    <header id="navbar-placeholder" class="mb-4"></header>
+    <header class="mb-4">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="/introduction">
+                    <span style="color: red; font-weight: bold;">APIX</span> ENGLISH
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="management.html">Student</a></li>
+                        <li class="nav-item"><a class="nav-link" href="teacher-manager.html">Teacher</a></li>
+                        <li class="nav-item"><a class="nav-link" href="book-manager.html">Book</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="class-manager.html">Class <span
+                                    class="sr-only">(current)</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="account-manager.html">Account</a></li>
+                        <li class="nav-item"><a class="nav-link" href="image-manager.html">Images</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <main class="container">
         <h2 class="mb-4">Image Management</h2>
@@ -41,7 +67,8 @@
                 <form action="/api/images/upload" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="gallery_image">Select image to upload:</label>
-                        <input type="file" class="form-control-file" name="gallery_image" id="gallery_image" accept="image/*" required>
+                        <input type="file" class="form-control-file" name="gallery_image" id="gallery_image"
+                            accept="image/*" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Upload Image</button>
                 </form>
@@ -64,21 +91,9 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        $(document).ready(function() {
-            // Load the shared navbar
-            $("#navbar-placeholder").load("admin-nav.html", function() {
-                // After the navbar is loaded, find the link that matches the current page and make it active
-                const currentPage = window.location.pathname.split("/").pop();
-                $('#navbar-placeholder .nav-link').each(function() {
-                    if ($(this).attr('href') === currentPage) {
-                        $(this).parent().addClass('active');
-                        $(this).append(' <span class="sr-only">(current)</span>');
-                    }
-                });
-            });
-
+        $(document).ready(function () {
             function loadImages() {
-                $.get('/api/images', function(images) {
+                $.get('/api/images', function (images) {
                     const gallery = $('#image-gallery');
                     gallery.empty();
                     images.forEach(image => {
@@ -96,13 +111,13 @@
             loadImages();
 
             // Handle image deletion
-            $('#image-gallery').on('click', '.delete-img-btn', function() {
+            $('#image-gallery').on('click', '.delete-img-btn', function () {
                 const filename = $(this).data('filename');
                 if (confirm(`Are you sure you want to delete this image?`)) {
-                    $.post('/api/images/delete', { filename: filename }, function(response) {
+                    $.post('/api/images/delete', { filename: filename }, function (response) {
                         alert(response.message);
                         loadImages(); // Refresh the gallery
-                    }).fail(function() {
+                    }).fail(function () {
                         alert('An error occurred while deleting the image.');
                     });
                 }
@@ -110,4 +125,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,11 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        .teacher-card-img { width: 100%; height: 220px; object-fit: cover; }
+        .teacher-card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
     </style>
 </head>
 
@@ -17,16 +22,18 @@
     <header class="mb-4">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="introduction.html">
+                <a class="navbar-brand" href="/introduction">
                     <span style="color: red; font-weight: bold;">APIX</span> ENGLISH
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link" href="management.html">Student</a></li>
-                        <li class="nav-item active"><a class="nav-link" href="teacher-manager.html">Teacher <span class="sr-only">(current)</span></a></li>
+                        <li class="nav-item active"><a class="nav-link" href="teacher-manager.html">Teacher <span
+                                    class="sr-only">(current)</span></a></li>
                         <li class="nav-item"><a class="nav-link" href="book-manager.html">Book</a></li>
                         <li class="nav-item"><a class="nav-link" href="class-manager.html">Class</a></li>
                         <li class="nav-item"><a class="nav-link" href="account-manager.html">Account</a></li>
@@ -49,7 +56,8 @@
                     </div>
                 </div>
                 <div class="col-md-4 text-right">
-                    <button type="button" class="btn btn-primary" id="add-teacher-btn"><i class="fa fa-plus"></i> Add New Teacher</button>
+                    <button type="button" class="btn btn-primary" id="add-teacher-btn"><i class="fa fa-plus"></i> Add
+                        New Teacher</button>
                 </div>
             </div>
             <div class="row teacher-work">
@@ -59,22 +67,31 @@
     </main>
 
     <!-- Add Teacher Modal -->
-    <div class="modal fade" id="addTeacherModal" tabindex="-1" aria-labelledby="addTeacherModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addTeacherModal" tabindex="-1" aria-labelledby="addTeacherModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="addTeacherModalLabel">Add New Teacher</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                 </div>
                 <form action="addStaff" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
-                        <div class="form-group"><input type="text" class="form-control" name="full_name" placeholder="Full Name" required></div>
-                        <div class="form-group"><input type="text" class="form-control" name="phone" placeholder="Phone Number" required></div>
-                        <div class="form-group"><input type="email" class="form-control" name="email" placeholder="Email Address" required></div>
-                        <div class="form-group"><input type="text" class="form-control" name="qualification" placeholder="Qualification (e.g., TESOL, CELTA)" required></div>
-                        <div class="form-group"><input type="text" class="form-control" name="specialty" placeholder="Specialty (e.g., IELTS, Business English)" required></div>
-                        <div class="form-group"><input type="number" class="form-control" name="experience_years" placeholder="Years of Experience" required></div>
-                        <div class="form-group"><input type="text" class="form-control" name="availability" placeholder="Availability (e.g., Full-time, Weekends)" required></div>
+                        <div class="form-group"><input type="text" class="form-control" name="full_name"
+                                placeholder="Full Name" required></div>
+                        <div class="form-group"><input type="text" class="form-control" name="phone"
+                                placeholder="Phone Number" required></div>
+                        <div class="form-group"><input type="email" class="form-control" name="email"
+                                placeholder="Email Address" required></div>
+                        <div class="form-group"><input type="text" class="form-control" name="qualification"
+                                placeholder="Qualification (e.g., TESOL, CELTA)" required></div>
+                        <div class="form-group"><input type="text" class="form-control" name="specialty"
+                                placeholder="Specialty (e.g., IELTS, Business English)" required></div>
+                        <div class="form-group"><input type="number" class="form-control" name="experience_years"
+                                placeholder="Years of Experience" required></div>
+                        <div class="form-group"><input type="text" class="form-control" name="availability"
+                                placeholder="Availability (e.g., Full-time, Weekends)" required></div>
                         <div class="form-group">
                             <!-- This hidden input will provide a default image path if no file is uploaded -->
                             <input type="hidden" name="default_image_path" value="imgs/user.png">
@@ -93,29 +110,40 @@
     </div>
 
     <!-- Edit Teacher Modal -->
-    <div class="modal fade" id="editTeacherModal" tabindex="-1" aria-labelledby="editTeacherModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editTeacherModal" tabindex="-1" aria-labelledby="editTeacherModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="editTeacherModalLabel">Edit Teacher Information</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                 </div>
                 <form id="edit-teacher-form">
                     <div class="modal-body">
                         <input type="hidden" id="edit-id" name="id">
-                        <div class="form-group"><label>Full Name</label><input type="text" class="form-control" id="edit-full_name" name="full_name" required></div>
-                        <div class="form-group"><label>Phone</label><input type="text" class="form-control" id="edit-phone" name="phone" required></div>
-                        <div class="form-group"><label>Email</label><input type="email" class="form-control" id="edit-email" name="email" required></div>
-                        <div class="form-group"><label>Qualification</label><input type="text" class="form-control" id="edit-qualification" name="qualification" required></div>
-                        <div class="form-group"><label>Specialty</label><input type="text" class="form-control" id="edit-specialty" name="specialty" required></div>
-                        <div class="form-group"><label>Years of Experience</label><input type="number" class="form-control" id="edit-experience_years" name="experience_years" required></div>
-                        <div class="form-group"><label>Availability</label><input type="text" class="form-control" id="edit-availability" name="availability" required></div>
+                        <div class="form-group"><label>Full Name</label><input type="text" class="form-control"
+                                id="edit-full_name" name="full_name" required></div>
+                        <div class="form-group"><label>Phone</label><input type="text" class="form-control"
+                                id="edit-phone" name="phone" required></div>
+                        <div class="form-group"><label>Email</label><input type="email" class="form-control"
+                                id="edit-email" name="email" required></div>
+                        <div class="form-group"><label>Qualification</label><input type="text" class="form-control"
+                                id="edit-qualification" name="qualification" required></div>
+                        <div class="form-group"><label>Specialty</label><input type="text" class="form-control"
+                                id="edit-specialty" name="specialty" required></div>
+                        <div class="form-group"><label>Years of Experience</label><input type="number"
+                                class="form-control" id="edit-experience_years" name="experience_years" required></div>
+                        <div class="form-group"><label>Availability</label><input type="text" class="form-control"
+                                id="edit-availability" name="availability" required></div>
                         <div class="form-group">
                             <label>Current Picture</label>
-                            <div><img id="edit-current-image" src="" alt="Current Teacher Image" class="img-thumbnail" style="max-height: 100px;"></div>
+                            <div><img id="edit-current-image" src="" alt="Current Teacher Image" class="img-thumbnail"
+                                    style="max-height: 100px;"></div>
                         </div>
                         <div class="form-group"><label>Upload New Picture (Optional)</label>
-                            <input type="file" class="form-control-file" id="edit-image" name="image" accept="image/*"></div>
+                            <input type="file" class="form-control-file" id="edit-image" name="image" accept="image/*">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -177,18 +205,18 @@
             loadAllTeachers();
 
             // Show Add Teacher Modal
-            $('#add-teacher-btn').on('click', function() {
+            $('#add-teacher-btn').on('click', function () {
                 $('#addTeacherModal').modal('show');
             });
 
             // Handle Search
-            $('#search-name-field').on('keyup', function() {
+            $('#search-name-field').on('keyup', function () {
                 const searchTerm = $(this).val().toLowerCase();
                 const filteredTeachers = all_teachers.filter(t => t.full_name.toLowerCase().includes(searchTerm));
                 displayTeachers(filteredTeachers);
             });
 
-            $('#reset-search-btn').on('click', function() {
+            $('#reset-search-btn').on('click', function () {
                 $('#search-name-field').val('');
                 displayTeachers(all_teachers);
             });
@@ -201,7 +229,7 @@
                     $.post("/deleteTeacher", { id: id }, function () {
                         alert('Teacher deleted successfully.');
                         loadAllTeachers();
-                    }).fail(function() {
+                    }).fail(function () {
                         alert('Error deleting teacher.');
                     });
                 }
@@ -226,7 +254,7 @@
             });
 
             // Handle Edit Form Submission
-            $('#edit-teacher-form').on('submit', function(e) {
+            $('#edit-teacher-form').on('submit', function (e) {
                 e.preventDefault();
                 var formData = new FormData(this);
 
@@ -236,15 +264,16 @@
                     data: formData,
                     processData: false, // Important!
                     contentType: false, // Important!
-                    success: function(response) {
+                    success: function (response) {
                         alert(response.message || 'Teacher updated successfully!');
                         $('#editTeacherModal').modal('hide');
                         loadAllTeachers();
                     },
-                    error: function() { alert('Error updating teacher information.'); }
+                    error: function () { alert('Error updating teacher information.'); }
                 });
             });
         });
     </script>
 </body>
+
 </html>

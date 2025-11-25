@@ -14,10 +14,11 @@
     <header class="mb-4">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="introduction.html">
+                <a class="navbar-brand" href="/introduction">
                     <span style="color: red; font-weight: bold;">APIX</span> ENGLISH
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -26,7 +27,8 @@
                         <li class="nav-item"><a class="nav-link" href="teacher-manager.html">Teacher</a></li>
                         <li class="nav-item"><a class="nav-link" href="book-manager.html">Book</a></li>
                         <li class="nav-item"><a class="nav-link" href="class-manager.html">Class</a></li>
-                        <li class="nav-item active"><a class="nav-link" href="account-manager.html">Account <span class="sr-only">(current)</span></a></li>
+                        <li class="nav-item active"><a class="nav-link" href="account-manager.html">Account <span
+                                    class="sr-only">(current)</span></a></li>
                         <li class="nav-item"><a class="nav-link" href="image-manager.html">Images</a></li>
                         <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
                     </ul>
@@ -37,23 +39,23 @@
 
     <main>
         <div class="container">
-                <h2 class="mb-4">Account Management</h2>
-                <button class="btn btn-success mb-3" data-toggle="modal" data-target="#addAccountModal">
-                    <i class="fa fa-plus"></i> Add New Account
-                </button>
-                <table class="table table-striped table-bordered">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Actions</th>
+            <h2 class="mb-4">Account Management</h2>
+            <button class="btn btn-success mb-3" data-toggle="modal" data-target="#addAccountModal">
+                <i class="fa fa-plus"></i> Add New Account
+            </button>
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
 
-                        </tr>
-                    </thead>
-                    <tbody id="account-table-body">
-                        <!-- Account data will be loaded here -->
-                    </tbody>
-                </table>
+                    </tr>
+                </thead>
+                <tbody id="account-table-body">
+                    <!-- Account data will be loaded here -->
+                </tbody>
+            </table>
         </div>
     </main>
 
@@ -175,7 +177,7 @@
             function loadTeachersWithoutAccount() {
                 const select = $('#add-email-select');
                 select.html('<option value="">-- Loading teachers... --</option>');
-                $.get('/api/teachers/no-account', function(teachers) {
+                $.get('/api/teachers/no-account', function (teachers) {
                     select.empty();
                     if (teachers.length === 0) {
                         select.append('<option value="">No teachers available to create accounts for</option>');
@@ -233,7 +235,7 @@
             });
 
             // Handle change password submission
-            $('#changePasswordForm').submit(function(e) {
+            $('#changePasswordForm').submit(function (e) {
                 e.preventDefault();
                 const newPassword = $('#new-password').val();
                 const confirmPassword = $('#confirm-password').val();
@@ -243,7 +245,7 @@
                     return;
                 }
 
-                $.post('/api/accounts/change-password', { id: $('#change-password-account-id').val(), password: newPassword }, function(response) {
+                $.post('/api/accounts/change-password', { id: $('#change-password-account-id').val(), password: newPassword }, function (response) {
                     alert(response.message);
                     $('#changePasswordModal').modal('hide').find('form')[0].reset();
                 }).fail(err => alert(err.responseJSON.message));

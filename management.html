@@ -12,11 +12,29 @@
         integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        body { background-color: #f8f9fa; }
-        main { padding-top: 2rem; padding-bottom: 2rem; }
-        .card { margin-bottom: 1.5rem; }
-        .form-scroll { max-height: 450px; overflow-y: auto; padding-right: 10px; }
-        .table-hover tbody tr:hover { background-color: #f1f1f1; cursor: pointer; }
+        body {
+            background-color: #f8f9fa;
+        }
+
+        main {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .card {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-scroll {
+            max-height: 450px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
     </style>
 
 </head>
@@ -25,15 +43,17 @@
     <header class="mb-4">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="introduction.html">
+                <a class="navbar-brand" href="/introduction">
                     <span style="color: red; font-weight: bold;">APIX</span> ENGLISH
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active"><a class="nav-link" href="management.html">Student <span class="sr-only">(current)</span></a></li>
+                        <li class="nav-item active"><a class="nav-link" href="management.html">Student <span
+                                    class="sr-only">(current)</span></a></li>
                         <li class="nav-item"><a class="nav-link" href="teacher-manager.html">Teacher</a></li>
                         <li class="nav-item"><a class="nav-link" href="book-manager.html">Book</a></li>
                         <li class="nav-item"><a class="nav-link" href="class-manager.html">Class</a></li>
@@ -53,7 +73,8 @@
                     <div class="card shadow-sm">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="mb-0">Student List</h5>
-                            <button type="button" class="btn btn-danger add-student-button"><i class="fa fa-plus"></i> Add New Student</button>
+                            <button type="button" class="btn btn-danger add-student-button"><i class="fa fa-plus"></i>
+                                Add New Student</button>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -84,39 +105,44 @@
                 <!-- Forms and Details Column -->
                 <div class="col-md-4">
                     <div id="sidebar-cards">
-                    <!-- Search & Filter Card -->
-                    <div class="card shadow-sm">
-                        <div class="card-header">
-                            <h5 class="mb-0"><i class="fa fa-filter"></i> Filters & Search</h5>
+                        <!-- Search & Filter Card -->
+                        <div class="card shadow-sm">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fa fa-filter"></i> Filters & Search</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control" id="search-input"
+                                        placeholder="Search by Name, Phone...">
+                                </div>
+                                <div class="form-group mb-2">
+                                    <select id="class-filter" class="form-control">
+                                        <option value="">-- Filter by Class --</option>
+                                        <!-- Class options will be loaded here -->
+                                    </select>
+                                </div>
+                                <div class="d-flex">
+                                    <button class="btn btn-primary search flex-grow-1" type="button"><i
+                                            class="fa fa-search"></i> Search</button>
+                                    <button class="btn btn-secondary ml-2" id="reset-search-btn"
+                                        type="button">Reset</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <div class="input-group mb-2">
-                                <input type="text" class="form-control" id="search-input" placeholder="Search by Name, Phone...">
-                            </div>
-                            <div class="form-group mb-2">
-                                <select id="class-filter" class="form-control">
-                                    <option value="">-- Filter by Class --</option>
-                                    <!-- Class options will be loaded here -->
-                                </select>
-                            </div>
-                            <div class="d-flex">
-                                <button class="btn btn-primary search flex-grow-1" type="button"><i class="fa fa-search"></i> Search</button>
-                                <button class="btn btn-secondary ml-2" id="reset-search-btn" type="button">Reset</button>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Student Details Card -->
-                    <div class="card shadow-sm detail2">
-                        <div class="card-header"><h5 class="mb-0">Student Details</h5></div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Select a student to see details.</li>
-                        </ul>
-                        <div class="card-footer" style="display: none;">
-                            <button class="btn btn-info w-100" id="edit-student-btn">Edit Student</button>
+                        <!-- Student Details Card -->
+                        <div class="card shadow-sm detail2">
+                            <div class="card-header">
+                                <h5 class="mb-0">Student Details</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Select a student to see details.</li>
+                            </ul>
+                            <div class="card-footer" style="display: none;">
+                                <button class="btn btn-info w-100" id="edit-student-btn">Edit Student</button>
+                            </div>
+                            </ul>
                         </div>
-                        </ul>
-                    </div>
                     </div>
                 </div>
             </div>
@@ -124,7 +150,8 @@
     </main>
 
     <!-- Add Student Modal -->
-    <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -135,15 +162,20 @@
                 </div>
                 <form action="/addStudent" method="post">
                     <div class="modal-body">
-                        <div class="form-group mb-2"><input type="text" class="form-control" name="lastname" placeholder="Last Name" required></div>
-                        <div class="form-group mb-2"><input type="text" class="form-control" name="firstname" placeholder="First Name" required></div>
-                        <div class="form-group mb-2"><input type="tel" class="form-control" name="tele" placeholder="Telephone"></div>
-                        <div class="form-group mb-2"><label>Enrollment Date</label><input type="date" class="form-control" name="datestudy"></div>
+                        <div class="form-group mb-2"><input type="text" class="form-control" name="lastname"
+                                placeholder="Last Name" required></div>
+                        <div class="form-group mb-2"><input type="text" class="form-control" name="firstname"
+                                placeholder="First Name" required></div>
+                        <div class="form-group mb-2"><input type="tel" class="form-control" name="tele"
+                                placeholder="Telephone"></div>
+                        <div class="form-group mb-2"><label>Enrollment Date</label><input type="date"
+                                class="form-control" name="datestudy"></div>
                         <div class="form-group mb-2">
                             <label>Class</label>
                             <select name="class" class="form-control add-class-select"></select>
                         </div>
-                        <div class="form-group mb-2"><input type="text" class="form-control" name="teacher" placeholder="Main Teacher"></div>
+                        <div class="form-group mb-2"><input type="text" class="form-control" name="teacher"
+                                placeholder="Main Teacher"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -155,7 +187,8 @@
     </div>
 
     <!-- Edit Student Modal -->
-    <div class="modal fade" id="editStudentModal" tabindex="-1" aria-labelledby="editStudentModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editStudentModal" tabindex="-1" aria-labelledby="editStudentModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -167,15 +200,20 @@
                 <form id="update-student-form">
                     <div class="modal-body">
                         <input type="hidden" name="id" id="update-id">
-                        <div class="form-group mb-2"><label>Last Name</label><input type="text" class="form-control" name="lastname" id="update-lastname"></div>
-                        <div class="form-group mb-2"><label>First Name</label><input type="text" class="form-control" name="firstname" id="update-firstname"></div>
-                        <div class="form-group mb-2"><label>Telephone</label><input type="tel" class="form-control" name="tele" id="update-tele"></div>
-                        <div class="form-group mb-2"><label>Study Date</label><input type="date" class="form-control" name="datestudy" id="update-datestudy"></div>
+                        <div class="form-group mb-2"><label>Last Name</label><input type="text" class="form-control"
+                                name="lastname" id="update-lastname"></div>
+                        <div class="form-group mb-2"><label>First Name</label><input type="text" class="form-control"
+                                name="firstname" id="update-firstname"></div>
+                        <div class="form-group mb-2"><label>Telephone</label><input type="tel" class="form-control"
+                                name="tele" id="update-tele"></div>
+                        <div class="form-group mb-2"><label>Study Date</label><input type="date" class="form-control"
+                                name="datestudy" id="update-datestudy"></div>
                         <div class="form-group mb-2">
                             <label>Class</label>
                             <select name="class" id="update-class" class="form-control"></select>
                         </div>
-                        <div class="form-group mb-2"><label>Teacher</label><input type="text" class="form-control" name="teacher" id="update-teacher"></div>
+                        <div class="form-group mb-2"><label>Teacher</label><input type="text" class="form-control"
+                                name="teacher" id="update-teacher"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -204,7 +242,7 @@
             });
 
             // Generic cancel button
-            $(".cancel-action-btn").click(function() {
+            $(".cancel-action-btn").click(function () {
                 $(this).closest('.card').hide(); // This is for the old card, can be removed if not used elsewhere
                 $('#sidebar-cards > .card:not(.add):not(.change)').show();
             });
@@ -212,13 +250,13 @@
 
             // Load all classes into filter and forms
             function loadClassesIntoSelect() {
-                $.get('/classdata', function(classes) {
+                $.get('/classdata', function (classes) {
                     all_classes_data = classes; // Save class data globally
 
                     const classFilter = $('#class-filter');
                     const updateClassSelect = $('#update-class');
                     const addClassSelect = $('.add-class-select');
-                    
+
                     classFilter.find('option:not(:first)').remove();
                     updateClassSelect.empty();
                     addClassSelect.empty().append('<option value="">-- Select a Class --</option>');
@@ -232,7 +270,7 @@
             }
 
             // Auto-fill teacher name when a class is selected in the Add modal
-            $('#addStudentModal').on('change', '.add-class-select', function() {
+            $('#addStudentModal').on('change', '.add-class-select', function () {
                 const selectedClassCode = $(this).val();
                 const teacherInput = $('#addStudentModal').find('input[name="teacher"]');
 
@@ -253,7 +291,7 @@
 
             // Fetch all students for client-side searching/filtering
             function loadAllStudents() {
-                 $.get("/getallstudentdata", function (data) {
+                $.get("/getallstudentdata", function (data) {
                     all_students = data;
                     loadPage(); // Reload the first page with all students
                 }, 'json');
@@ -306,7 +344,7 @@
             });
 
             // Handle clicking the "Edit Student" button on the details card
-            $('#edit-student-btn').on('click', function() {
+            $('#edit-student-btn').on('click', function () {
                 $('#editStudentModal').modal('show');
             });
 
@@ -322,7 +360,7 @@
 
                     return (nameMatch || phoneMatch) && classMatch;
                 });
-                
+
                 // Since we don't have server-side pagination for filtered results,
                 // we will display all filtered results at once.
                 displayStudentsInTable(filteredStudents);
@@ -330,14 +368,14 @@
             });
 
             // Reset search
-            $('#reset-search-btn').click(function() {
+            $('#reset-search-btn').click(function () {
                 $('#search-input').val('');
                 $('#class-filter').val('');
                 loadPage(); // Reload paginated data
             });
 
             // Handle Update Form Submission
-            $('#update-student-form').submit(function(e) {
+            $('#update-student-form').submit(function (e) {
                 e.preventDefault();
                 const studentData = {
                     id: $('#update-id').val(),
@@ -350,11 +388,11 @@
                 };
 
                 // Assuming an endpoint /updateStudent exists
-                $.post('/updateStudent', studentData, function(response) {
+                $.post('/updateStudent', studentData, function (response) {
                     alert(response.message || "Student updated successfully!");
                     loadAllStudents();
                     $('#editStudentModal').modal('hide'); // Hide modal on success
-                }).fail(function() {
+                }).fail(function () {
                     alert("Failed to update student.");
                 });
             });
@@ -369,7 +407,7 @@
 
             if (classCodeToView) {
                 // Wait for all students to be loaded
-                const interval = setInterval(function() {
+                const interval = setInterval(function () {
                     if (all_students.length > 0) {
                         clearInterval(interval);
                         const filtered = all_students.filter(s => s.class === classCodeToView);

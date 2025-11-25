@@ -94,9 +94,6 @@ app.get('/imgs/introduction.png', (req, res) => {
 app.get('/imgs/user-cover.png', (req, res) => {
     createReadStream('imgs/user-cover.png').pipe(res)
 })
-app.get('/Register.html', (req, res) => {
-    createReadStream('Register.html').pipe(res)
-})
 app.get('/style.css', (req, res) => {
     createReadStream('style.css').pipe(res)
 })
@@ -104,10 +101,9 @@ app.get('/stylesheet.css', (req, res) => {
     createReadStream('stylesheet.css').pipe(res)
 })
 app.get('/introduction', isAuthenticated, isAdmin, (req, res) => {
-    createReadStream('introduction.html').pipe(res)
+    createReadStream('./introduction.html').pipe(res)
 })
 app.get('/management.html', isAuthenticated, isAdmin, (req, res) => {
-
     createReadStream('./management.html').pipe(res)
 })
 app.get('/teacher-manager.html', isAuthenticated, isAdmin, (req, res) => {
@@ -115,7 +111,6 @@ app.get('/teacher-manager.html', isAuthenticated, isAdmin, (req, res) => {
 })
 app.get('/book-manager.html', isAuthenticated, isAdmin, (req, res) => {
     createReadStream('book-manager.html').pipe(res)
-
 })
 app.get('/class-manager.html', isAuthenticated, isAdmin, (req, res) => {
     createReadStream('class-manager.html').pipe(res)
@@ -126,13 +121,9 @@ app.get('/account-manager.html', isAuthenticated, isAdmin, (req, res) => {
 app.get('/image-manager.html', isAuthenticated, isAdmin, (req, res) => {
     createReadStream('image-manager.html').pipe(res)
 })
-app.get('/admin-nav.html', isAuthenticated, isAdmin, (req, res) => {
-    createReadStream('admin-nav.html').pipe(res)
-})
 app.get('/teacher-dashboard.html', isAuthenticated, isTeacher, (req, res) => {
     createReadStream('teacher-dashboard.html').pipe(res);
 });
-
 app.get('/', (req, res) => {
     createReadStream('users.html').pipe(res)
     // res.render({ username: req.session.email });

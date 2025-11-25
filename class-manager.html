@@ -14,10 +14,11 @@
     <header class="mb-4">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="introduction.html">
+                <a class="navbar-brand" href="/introduction">
                     <span style="color: red; font-weight: bold;">APIX</span> ENGLISH
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -25,7 +26,8 @@
                         <li class="nav-item"><a class="nav-link" href="management.html">Student</a></li>
                         <li class="nav-item"><a class="nav-link" href="teacher-manager.html">Teacher</a></li>
                         <li class="nav-item"><a class="nav-link" href="book-manager.html">Book</a></li>
-                        <li class="nav-item active"><a class="nav-link" href="class-manager.html">Class <span class="sr-only">(current)</span></a></li>
+                        <li class="nav-item active"><a class="nav-link" href="class-manager.html">Class <span
+                                    class="sr-only">(current)</span></a></li>
                         <li class="nav-item"><a class="nav-link" href="account-manager.html">Account</a></li>
                         <li class="nav-item"><a class="nav-link" href="image-manager.html">Images</a></li>
                         <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
@@ -39,9 +41,11 @@
             <div class="row mb-4">
                 <div class="col-md-8">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="search-id-input" placeholder="Search by Class ID...">
+                        <input type="text" class="form-control" id="search-id-input"
+                            placeholder="Search by Class ID...">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button" id="search-btn"><i class="fa fa-search"></i> Search</button>
+                            <button class="btn btn-primary" type="button" id="search-btn"><i class="fa fa-search"></i>
+                                Search</button>
                             <button class="btn btn-secondary" type="button" id="reset-btn">Reset</button>
                         </div>
                     </div>
@@ -63,21 +67,31 @@
                         <div class="add-class-form p-3 border rounded bg-light">
                             <h5>Add New Class</h5>
                             <form action="/addClass" method="post" class="form-scroll">
-                                <div class="form-group mb-2"><input type="text" class="form-control" name="class_name" placeholder="Class Name" required></div>
-                                <div class="form-group mb-2"><input type="text" class="form-control" name="class_code" placeholder="Class Code" required></div>
-                                <div class="form-group mb-2"><input type="text" class="form-control" name="course" placeholder="Course (e.g., IELTS)"></div>
-                                <div class="form-group mb-2"><input type="text" class="form-control" name="level" placeholder="Level (e.g., Beginner)"></div>
-                                <div class="form-group mb-2"><label>Start Date</label><input type="date" class="form-control" name="start_date"></div>
-                                <div class="form-group mb-2"><label>End Date</label><input type="date" class="form-control" name="end_date"></div>
-                                <div class="form-group mb-2"><input type="text" class="form-control" name="schedule" placeholder="Schedule (e.g., T2,T4 19:00-20:30)"></div>
-                                <div class="form-group mb-2"><input type="number" class="form-control" name="total_sessions" placeholder="Total Sessions"></div>
-                                <div class="form-group mb-2"><input type="number" class="form-control" name="sessions_done" placeholder="Sessions Done" value="0"></div>
+                                <div class="form-group mb-2"><input type="text" class="form-control" name="class_name"
+                                        placeholder="Class Name" required></div>
+                                <div class="form-group mb-2"><input type="text" class="form-control" name="class_code"
+                                        placeholder="Class Code" required></div>
+                                <div class="form-group mb-2"><input type="text" class="form-control" name="course"
+                                        placeholder="Course (e.g., IELTS)"></div>
+                                <div class="form-group mb-2"><input type="text" class="form-control" name="level"
+                                        placeholder="Level (e.g., Beginner)"></div>
+                                <div class="form-group mb-2"><label>Start Date</label><input type="date"
+                                        class="form-control" name="start_date"></div>
+                                <div class="form-group mb-2"><label>End Date</label><input type="date"
+                                        class="form-control" name="end_date"></div>
+                                <div class="form-group mb-2"><input type="text" class="form-control" name="schedule"
+                                        placeholder="Schedule (e.g., T2,T4 19:00-20:30)"></div>
+                                <div class="form-group mb-2"><input type="number" class="form-control"
+                                        name="total_sessions" placeholder="Total Sessions"></div>
+                                <div class="form-group mb-2"><input type="number" class="form-control"
+                                        name="sessions_done" placeholder="Sessions Done" value="0"></div>
                                 <div class="form-group mb-2">
                                     <select name="teacher" class="form-control teacher-select">
                                         <option value="">-- Select Teacher --</option>
                                     </select>
                                 </div>
-                                <div class="form-group mb-2"><input type="text" class="form-control" name="room" placeholder="Room / Branch"></div>
+                                <div class="form-group mb-2"><input type="text" class="form-control" name="room"
+                                        placeholder="Room / Branch"></div>
                                 <div class="form-group mb-2">
                                     <select name="status" class="form-control">
                                         <option value="Planned">Planned</option>
@@ -86,32 +100,44 @@
                                         <option value="Completed">Completed</option>
                                     </select>
                                 </div>
-                                <div class="form-group mb-2"><input type="text" class="form-control" name="tuition_fee" placeholder="Tuition Fee (e.g., 5,000,000 VND)"></div>
+                                <div class="form-group mb-2"><input type="text" class="form-control" name="tuition_fee"
+                                        placeholder="Tuition Fee (e.g., 5,000,000 VND)"></div>
                                 <button type="submit" class="btn btn-success w-100">Add Class</button>
                             </form>
                         </div>
 
                         <!-- Update Class Form (Initially hidden) -->
-                        <div class="update-class-form p-3 border rounded bg-light" style="display: none; margin-top: 20px;">
+                        <div class="update-class-form p-3 border rounded bg-light"
+                            style="display: none; margin-top: 20px;">
                             <h5>Update Class</h5>
                             <form id="update-form" class="form-scroll">
                                 <input type="hidden" id="update-class-id" name="id">
-                                <div class="form-group mb-2"><label>Class Name</label><input type="text" class="form-control" id="update-class_name" name="class_name" required></div>
-                                <div class="form-group mb-2"><label>Class Code</label><input type="text" class="form-control" id="update-class_code" name="class_code" required></div>
-                                <div class="form-group mb-2"><label>Course</label><input type="text" class="form-control" id="update-course" name="course"></div>
-                                <div class="form-group mb-2"><label>Level</label><input type="text" class="form-control" id="update-level" name="level"></div>
-                                <div class="form-group mb-2"><label>Start Date</label><input type="date" class="form-control" id="update-start_date" name="start_date"></div>
-                                <div class="form-group mb-2"><label>End Date</label><input type="date" class="form-control" id="update-end_date" name="end_date"></div>
-                                <div class="form-group mb-2"><label>Schedule</label><input type="text" class="form-control" id="update-schedule" name="schedule"></div>
-                                <div class="form-group mb-2"><label>Total Sessions</label><input type="number" class="form-control" id="update-total_sessions" name="total_sessions"></div>
-                                <div class="form-group mb-2"><label>Sessions Done</label><input type="number" class="form-control" id="update-sessions_done" name="sessions_done"></div>
+                                <div class="form-group mb-2"><label>Class Name</label><input type="text"
+                                        class="form-control" id="update-class_name" name="class_name" required></div>
+                                <div class="form-group mb-2"><label>Class Code</label><input type="text"
+                                        class="form-control" id="update-class_code" name="class_code" required></div>
+                                <div class="form-group mb-2"><label>Course</label><input type="text"
+                                        class="form-control" id="update-course" name="course"></div>
+                                <div class="form-group mb-2"><label>Level</label><input type="text" class="form-control"
+                                        id="update-level" name="level"></div>
+                                <div class="form-group mb-2"><label>Start Date</label><input type="date"
+                                        class="form-control" id="update-start_date" name="start_date"></div>
+                                <div class="form-group mb-2"><label>End Date</label><input type="date"
+                                        class="form-control" id="update-end_date" name="end_date"></div>
+                                <div class="form-group mb-2"><label>Schedule</label><input type="text"
+                                        class="form-control" id="update-schedule" name="schedule"></div>
+                                <div class="form-group mb-2"><label>Total Sessions</label><input type="number"
+                                        class="form-control" id="update-total_sessions" name="total_sessions"></div>
+                                <div class="form-group mb-2"><label>Sessions Done</label><input type="number"
+                                        class="form-control" id="update-sessions_done" name="sessions_done"></div>
                                 <div class="form-group mb-2">
                                     <label>Teacher</label>
                                     <select id="update-teacher" name="teacher" class="form-control teacher-select">
                                         <option value="">-- Select Teacher --</option>
                                     </select>
                                 </div>
-                                <div class="form-group mb-2"><label>Room</label><input type="text" class="form-control" id="update-room" name="room"></div>
+                                <div class="form-group mb-2"><label>Room</label><input type="text" class="form-control"
+                                        id="update-room" name="room"></div>
                                 <div class="form-group mb-2">
                                     <label>Status</label>
                                     <select id="update-status" name="status" class="form-control">
@@ -121,9 +147,11 @@
                                         <option value="Completed">Completed</option>
                                     </select>
                                 </div>
-                                <div class="form-group mb-2"><label>Tuition Fee</label><input type="text" class="form-control" id="update-tuition_fee" name="tuition_fee"></div>
+                                <div class="form-group mb-2"><label>Tuition Fee</label><input type="text"
+                                        class="form-control" id="update-tuition_fee" name="tuition_fee"></div>
                                 <button type="submit" class="btn btn-primary w-100">Update Class</button>
-                                <button type="button" class="btn btn-secondary w-100 mt-2" id="cancel-update">Cancel</button>
+                                <button type="button" class="btn btn-secondary w-100 mt-2"
+                                    id="cancel-update">Cancel</button>
                             </form>
                         </div>
                     </div>
@@ -146,9 +174,9 @@
             // Function to load teachers into select dropdowns
             function loadTeachers() {
                 // Fetch teacher data from the correct endpoint
-                $.get('/teacherdata', function(teachers) {
+                $.get('/teacherdata', function (teachers) {
                     const teacherSelects = $('.teacher-select');
-                    teacherSelects.each(function() {
+                    teacherSelects.each(function () {
                         const currentVal = $(this).val(); // Preserve selected value if any
                         $(this).find('option:not(:first)').remove(); // Clear existing options
                         teachers.forEach(teacher => {
@@ -228,7 +256,7 @@
             loadTeachers(); // Load teachers on page load
 
             // Handle Search
-            $('#search-btn').on('click', function() {
+            $('#search-btn').on('click', function () {
                 const searchId = $('#search-id-input').val().trim();
                 if (searchId === '') {
                     displayClasses(all_classes);
@@ -239,7 +267,7 @@
             });
 
             // Handle Reset Search
-            $('#reset-btn').on('click', function() {
+            $('#reset-btn').on('click', function () {
                 $('#search-id-input').val('');
                 displayClasses(all_classes);
             });
@@ -256,7 +284,7 @@
             });
 
             // Handle showing student list modal
-            $('#class-container').on('click', '.view-students-btn', function() {
+            $('#class-container').on('click', '.view-students-btn', function () {
                 // This will redirect to the student management page with a filter
                 const classCode = $(this).data('class-code');
                 window.location.href = `management.html?view_class=${classCode}`;
@@ -279,7 +307,7 @@
                     $('#update-end_date').val(toInputDate(classToUpdate.end_date));
                     $('#update-schedule').val(classToUpdate.schedule);
                     $('#update-total_sessions').val(classToUpdate.total_sessions);
-                    $('#update-sessions_done').val(classToUpdate.sessions_done);                    
+                    $('#update-sessions_done').val(classToUpdate.sessions_done);
                     $('#update-teacher').val(classToUpdate.teacher);
                     $('#update-room').val(classToUpdate.room);
                     $('#update-status').val(classToUpdate.status);
@@ -311,11 +339,11 @@
                     teacher: $('#update-teacher').val(), room: $('#update-room').val(), status: $('#update-status').val(),
                     tuition_fee: $('#update-tuition_fee').val(),
                 };
-                $.post('/updateClass', classData, function(response) {
+                $.post('/updateClass', classData, function (response) {
                     alert(response.message);
                     loadAllClasses();
                     $('#cancel-update').click(); // Hide form and show add form
-                }).fail(function() {
+                }).fail(function () {
                     alert('An error occurred while updating the class.');
                 });
             });
