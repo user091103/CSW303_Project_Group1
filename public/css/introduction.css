@@ -135,11 +135,20 @@ li a:hover {
     margin-bottom: 2rem;
 }
 
-.introduction-image-container .user-img {
+.user-img {
+    width: 100%;
+    height: auto;
     border-radius: 1rem;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
     border: 4px solid rgba(255, 255, 255, 0.5);
 }
+
+.introduction-image-container {
+    max-width: 600px;
+    margin: 0 auto;
+    transform: translateX(clamp(0px, 5vw, 100px));
+}
+
 
 .cta-buttons .btn {
     border-radius: 50px;
