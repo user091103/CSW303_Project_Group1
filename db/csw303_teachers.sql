@@ -79,6 +79,17 @@ VALUES (
         10,
         'Full-time',
         '/uploads/employees/john_doe.jpg'
+    ),
+    (
+        3,
+        'Bob Brown',
+        '0988123456',
+        'teacher@gmail.com',
+        'TESOL',
+        'IELTS Writing',
+        6,
+        'Part-time',
+        '/uploads/employees/bob_brown.jpg'
     );
 /*!40000 ALTER TABLE `teachers` ENABLE KEYS */
 ;

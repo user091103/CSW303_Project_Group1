@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="path/to/carousel.css" />
     <link rel="stylesheet" type="text/css" href="/css/introduction.css">
 </head>
 
@@ -108,7 +110,8 @@
                         </div>
                         <div class="col-4"></div>
                     </div>
-                    <div class="row user-teacher">
+                    <div id="teacher-carousel" class="flip-carousel">
+                        <!-- JS will populate slides -->
                     </div>
                 </div>
             </div>
@@ -246,9 +249,10 @@
     </footer>
 
 
-
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="path/to/carousel.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/introduction.js"></script>
 </body>

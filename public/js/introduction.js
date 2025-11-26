@@ -1,61 +1,163 @@
 $(document).ready(function () {
     let all_teachers = [];
+    let currentIndex = 0;
+    const carousel = $("#teacher-carousel");
 
-    function displayTeachers(teachers) {
-        const container = $(".user-teacher");
-        container.empty();
-        if (teachers.length === 0) {
-            container.html('<p class="col-12 text-center">No teachers found.</p>');
+    function renderCarousel(teachers) {
+        carousel.empty();
+        if (!teachers || teachers.length === 0) {
+            carousel.html('<p class="text-center w-100">No teachers found.</p>');
             return;
         }
-        teachers.forEach(teacher => {
-            const card = `
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100 shadow-sm">
-                                <div class="row no-gutters">
-                                    <div class="col-md-4">
-                                        <div class="teacher-img-container">
-                                            <img src="${teacher.img_path || 'imgs/user.png'}" class="card-img-top" alt="${teacher.full_name}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title">${teacher.full_name}</h5>
-                                            <p class="card-text mb-1"><b>Specialty:</b> ${teacher.specialty}</p>
-                                            <p class="card-text mb-1"><b>Qualification:</b> ${teacher.qualification}</p>
-                                            <p class="card-text mb-1"><b>Experience:</b> ${teacher.experience_years} years</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-            container.append(card);
+
+        teachers.forEach(t => {
+            const img = t.img_path || 'imgs/user.png';
+            const name = t.full_name || '';
+            const specialty = t.specialty || 'N/A';
+            const qual = t.qualification || 'N/A';
+            const exp = t.experience_years || 0;
+
+            const $slide = $(`
+        <div class="flip-slide" data-index="" tabindex="0">
+          <img src="${img}" alt="${name}">
+          <div class="teacher-info-overlay">
+            <h5 style="margin:0 0 6px;">${name}</h5>
+            <div>Specialty: ${specialty}</div>
+            <div>Qualification: ${qual}</div>
+            <div>Experience: ${exp} years</div>
+          </div>
+        </div>
+      `);
+            carousel.append($slide);
+        });
+
+        if (currentIndex >= teachers.length) currentIndex = 0;
+
+        layoutSlides();
+        updateCarousel();
+        attachSlideHandlers();
+    }
+
+    function computeOffset() {
+        const $first = carousel.find('.flip-slide img').first();
+        if ($first.length === 0) return 320;
+        const w = $first.outerWidth(true);
+        const gap = 48;
+        return Math.round(w + gap);
+    }
+
+    function layoutSlides() {
+        const slides = carousel.children('.flip-slide');
+        const n = slides.length;
+        if (n === 0) return;
+        const offset = computeOffset();
+
+        slides.each(function (i) {
+            let d = i - currentIndex;
+            if (d > n / 2) d -= n;
+            if (d < -n / 2) d += n;
+
+            let x = d * offset;
+            let scale = 1 - Math.min(Math.abs(d) * 0.12, 0.4);
+            if (Math.abs(d) > 2) {
+                x = d * offset * 1.1;
+                scale = 0.72;
+            }
+            $(this).css('--x', x + 'px');
+            $(this).css('--s', scale);
+        });
+    }
+
+    function updateCarousel() {
+        const slides = carousel.children('.flip-slide');
+        const n = slides.length;
+        if (n === 0) return;
+
+        slides.removeClass('active side off');
+
+        const prev = (currentIndex - 1 + n) % n;
+        const next = (currentIndex + 1) % n;
+
+        slides.eq(currentIndex).addClass('active');
+        slides.eq(prev).addClass('side');
+        slides.eq(next).addClass('side');
+
+        // far slides
+        slides.each(function (i) {
+            const d = Math.abs(i - currentIndex);
+            const wrapD = Math.abs((i - currentIndex + n) % n);
+            const mind = Math.min(d, wrapD);
+            if (mind > 2) $(this).addClass('off');
+        });
+    }
+
+    function nextSlide() {
+        const slides = carousel.children('.flip-slide');
+        if (slides.length === 0) return;
+        currentIndex = (currentIndex + 1) % slides.length;
+        layoutSlides();
+        updateCarousel();
+    }
+    function prevSlide() {
+        const slides = carousel.children('.flip-slide');
+        if (slides.length === 0) return;
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        layoutSlides();
+        updateCarousel();
+    }
+
+    let autoplay = setInterval(nextSlide, 3000);
+    carousel.on('mouseenter', () => clearInterval(autoplay));
+    carousel.on('mouseleave', () => { autoplay = setInterval(nextSlide, 3000); });
+
+    function attachSlideHandlers() {
+        carousel.find('.flip-slide').off('click').on('click', function (e) {
+            const idx = $(this).index();
+            if ($(this).hasClass('active')) {
+                $(this).toggleClass('show-info');
+            } else {
+                currentIndex = idx;
+                layoutSlides();
+                updateCarousel();
+            }
+        });
+
+        $(document).off('keydown.carousel').on('keydown.carousel', function (e) {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+
+        $(window).off('resize.carousel').on('resize.carousel', function () {
+            layoutSlides();
         });
     }
 
     function loadAllTeachers() {
         $.get("/teacherdata", function (data) {
-            all_teachers = data;
-            displayTeachers(all_teachers);
-        }, "json");
+            all_teachers = Array.isArray(data) ? data : [];
+            renderCarousel(all_teachers);
+        }, "json").fail(function () {
+            all_teachers = [];
+            renderCarousel([]);
+        });
     }
 
-    loadAllTeachers();
-    loadGalleryImages();
-
-    $("#searching").click(function () {
-        const searchTerm = $("#search-name-field").val().toLowerCase();
-        if (searchTerm === '') {
-            displayTeachers(all_teachers);
+    $("#searching").on('click', function () {
+        const term = $("#search-name-field").val().toLowerCase().trim();
+        if (!term) {
+            renderCarousel(all_teachers);
             return;
         }
-        const filteredTeachers = all_teachers.filter(teacher =>
-            teacher.full_name.toLowerCase().includes(searchTerm)
-        );
-        displayTeachers(filteredTeachers);
+        const filtered = all_teachers.filter(t => (t.full_name || '').toLowerCase().includes(term));
+        currentIndex = 0;
+        renderCarousel(filtered);
     });
+
+    loadAllTeachers();
 });
+
+
+
 
 // Load courses dynamically
 function loadCourses() {
