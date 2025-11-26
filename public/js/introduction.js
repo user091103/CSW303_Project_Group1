@@ -70,7 +70,7 @@ function loadCourses() {
         classes.forEach(cls => {
             const courseCard = `
                         <div class="col-lg-4 col-md-6 mb-4">
-                          <div class="card h-100 shadow-lg border-0">
+                          <div class="card h-100 shadow-lg border-0 card-hover">
                             <div class="card-body d-flex flex-column">
                               <h4 class="card-title text-danger">🎯 ${cls.class_name}</h4>
                               <p class="card-text">
