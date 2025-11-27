@@ -185,8 +185,80 @@ li a:hover {
 
 
 /* Teacher section */
+.container-fluid {
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
 .service-overlay {
     background-color: #f8f9fa;
+}
+
+.teacher-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    margin: 20px auto 60px;
+    width: 100%;
+}
+
+.teacher-layout h3 {
+    color: #ffdd33;
+    text-decoration: underline;
+    text-decoration-color: #ffdd33;
+    text-underline-offset: 4px;
+}
+
+/* LEFT – RIGHT side panels */
+.teacher-side-panel {
+    width: 400px;
+    min-height: 500px;
+    background: #dc3545;
+    /* màu đỏ */
+    color: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+.teacher-side-panel h3 {
+    margin-bottom: 14px;
+    font-size: 1.35rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.teacher-side-panel p {
+    line-height: 1.45;
+    font-size: 0.95rem;
+}
+
+.teacher-side-panel ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.teacher-side-panel li {
+    margin-bottom: 10px;
+    line-height: 1.45;
+}
+
+/* Giữ chiều cao khớp với carousel */
+.teacher-side-panel.left,
+.teacher-side-panel.right {
+    display: flex;
+}
+
+/* Đảm bảo carousel ở giữa không bị kéo lệch */
+.flip-carousel {
+    position: relative;
+    max-width: 420px;
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
 }
 
 #teacher-carousel {
@@ -272,6 +344,23 @@ li a:hover {
     transform: translateY(0);
 }
 
+/* Responsive */
+@media (max-width: 992px) {
+    .teacher-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .teacher-side-panel {
+        width: 90%;
+        min-height: auto;
+    }
+
+    .flip-carousel {
+        max-width: 100%;
+    }
+}
+
 @media (max-width: 768px) {
     #teacher-carousel {
         height: 360px;
@@ -281,10 +370,6 @@ li a:hover {
         width: 200px;
         height: 300px;
     }
-}
-
-.container .py-5 {
-    padding-bottom: 0px;
 }
 
 
@@ -333,10 +418,6 @@ li a:hover {
     width: 100%;
     max-width: 30%;
     margin: 20px;
-}
-
-.red {
-    color: red;
 }
 
 /* Contact Section */
