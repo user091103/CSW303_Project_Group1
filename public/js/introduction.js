@@ -18,16 +18,16 @@ $(document).ready(function () {
             const exp = t.experience_years || 0;
 
             const $slide = $(`
-        <div class="flip-slide" data-index="" tabindex="0">
-          <img src="${img}" alt="${name}">
-          <div class="teacher-info-overlay">
-            <h5 style="margin:0 0 6px;">${name}</h5>
-            <div>Specialty: ${specialty}</div>
-            <div>Qualification: ${qual}</div>
-            <div>Experience: ${exp} years</div>
-          </div>
-        </div>
-      `);
+                                <div class="flip-slide" data-index="" tabindex="0">
+                                    <img src="${img}" alt="${name}">
+                                    <div class="teacher-info-overlay">
+                                        <h5 style="margin:0 0 6px;">${name}</h5>
+                                        <div>Specialty: ${specialty}</div>
+                                        <div>Qualification: ${qual}</div>
+                                        <div>Experience: ${exp} years</div>
+                                    </div>
+                                </div>
+                            `);
             carousel.append($slide);
         });
 
