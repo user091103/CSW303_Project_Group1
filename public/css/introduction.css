@@ -140,14 +140,14 @@ li a:hover {
 }
 
 .cta-buttons .btn-danger {
-    background-color: #fff;
+    background-color: #ffdd57;
     border-color: #fff;
     color: #c82333;
 }
 
 .cta-buttons .btn-danger:hover {
-    background-color: transparent;
-    color: #fff;
+    background-color: #fff;
+    color: #ffdd57;
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
