@@ -338,8 +338,7 @@ li a:hover {
     line-height: 1.3;
 }
 
-.flip-slide.active:hover .teacher-info-overlay,
-.flip-slide.active.show-info .teacher-info-overlay {
+.flip-slide.active .teacher-info-overlay {
     opacity: 1;
     transform: translateY(0);
 }
