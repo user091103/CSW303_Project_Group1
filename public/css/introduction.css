@@ -1,93 +1,75 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 
 
 .navv {
     width: 100%;
-    text-align: center;
-    z-index: 100;
-    display: flex;
-    background-color: red;
     position: fixed;
     top: 0;
-    scroll-behavior: smooth;
-
+    z-index: 100;
+    background-color: #c82333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    border-bottom: 3px solid whitesmoke;
 }
-
-.teacher-pic {
-    width: 170px;
-    height: 220px;
-    border-radius: 0;
-    object-fit: cover;
-}
-
-
-
-.logo {
-    align-content: center;
-    margin-right: 20px;
-    color: white;
-}
-
-.navigation {}
 
 .logo h1 {
-    margin-left: 20px;
-}
-
-.navv img {
-    width: 200px;
-
-}
-
-.navv ul {
-    margin: 0;
-    padding-left: 0%;
-    margin-left: 600px;
-    scroll-behavior: smooth;
-
-    align-content: center;
-}
-
-.user-img {
-    border-radius: 10px;
-    width: 70%;
-}
-
-
-.navi {
-    right: 0;
-}
-
-.navv li {
-    list-style-type: none;
-    margin-left: 0;
-    display: inline;
-    scroll-behavior: smooth;
-
-
-}
-
-.navv li a {
-
-
-    text-decoration: none;
     color: white;
-    margin-right: 30px;
-
-
+    margin: 0;
 }
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #ffe5e5;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: 0.25s ease;
+}
+
+.menu li a:hover {
+    background-color: #ffe5e5;
+    color: #c82333;
+}
+
+.login-btn a {
+    background-color: #ffe5e5;
+    color: #c82333;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.login-btn a:hover {
+    background-color: #ffe5e5;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
 
 html {
     scroll-behavior: smooth;
-
 }
 
 li a:hover {
     text-decoration: none;
-    color: white;
+    color: #ffe5e5;
 }
 
 .section {
@@ -96,7 +78,7 @@ li a:hover {
 
 .quest {
     font-size: larger;
-    color: red;
+    color: #c82333;
 }
 
 /* Introduction Section - Red Theme Redesign */
@@ -106,7 +88,7 @@ li a:hover {
     /* Deep Red Background */
     background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 15px 15px;
-    color: white;
+    color: #ffe5e5;
     position: relative;
     overflow: hidden;
     margin-top: 56px;
