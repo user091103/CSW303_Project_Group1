@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-image: url('/images/CSE408_background.png');
+
+}
+
+::placeholder {
+    font-weight: 500;
+    color: #222;
+}
+
+
+
+
+/* navigation-bar */
+.navbar-collapse {
+    display: flex;
+    justify-content: center !important;
+}
+
+.navbar-nav {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-nav li a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 8px 14px;
+    transition: 0.25s ease;
+    border-radius: 5px;
+}
+
+.navbar-nav li a:hover {
+    background-color: #ffffff;
+    color: #c82333 !important;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+}
+
+
+
+
+
+/* student-manager */
+main {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.card {
+    margin-bottom: 1.5rem;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+
+
+
+/* management */
+.pagination {
+    float: left;
+    margin-left: 270px;
+}
+
+/* teacher-mamanger */
+button {
+    width: 100%;
+}
+
+/* addform */
+.detail {
+    position: relative;
+}
+
+thead tr {
+    background-color: red;
+    color: white;
+}
+
+.add {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    padding: 10px;
+    text-align: center;
+    display: none;
+}
+
+.change {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    padding: 10px;
+    text-align: center;
+    display: none;
+}
+
+.add ::placeholder {
+    color: rgb(236, 109, 109);
+}
+
+.add button {
+    width: 50px;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    font-weight: 700;
+    color: red;
+}
+
+tr:hover {
+    background-color: red;
+    color: white;
+}
+
+
+
+.delete:hover {
+    color: black;
+    font-weight: 800;
+    cursor: pointer;
+
+}
+
+
+
+/* book-manager */
+.book-show img {
+    width: 150px;
+    height: 200px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.book-show h3 {
+    text-align: center;
+}
+
+.book-cover {
+    position: relative;
+}
+
+.book-overlay {
+    position: absolute;
+    width: 50%;
+
+    height: 100%;
+    z-index: 1;
+    display: none;
+}
+
+.price {
+    margin-left: 45px;
+}
+
+.stock {
+    margin-left: 70px;
+}
+
+.sold {
+    margin-left: 45px;
+}
+
+
+
+/* Aspect Ratio Styling for Teacher Images */
+.teacher-img-container {
+    position: relative;
+    width: 100%;
+    padding-top: 125%;
+    /* 4:5 Aspect Ratio (height/width) */
+    background-color: #f0f0f0;
+    /* Fallback color */
+}
+
+.teacher-img-container .card-img-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the image covers the area without distortion */
+}
+
+
+/* image-manager */
+.gallery-img-container {
+    position: relative;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.delete-img-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
