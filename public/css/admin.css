@@ -73,14 +73,14 @@ main {
     cursor: pointer;
 }
 
-
-
-
-/* management */
 .pagination {
     float: left;
     margin-left: 270px;
 }
+
+
+
+
 
 /* teacher-mamanger */
 button {
@@ -93,7 +93,7 @@ button {
 }
 
 thead tr {
-    background-color: red;
+    background-color: #c82333;
     color: white;
 }
 
@@ -129,22 +129,24 @@ thead tr {
     border: none;
     border-radius: 3px;
     font-weight: 700;
-    color: red;
+    color: #c82333;
 }
 
 tr:hover {
-    background-color: red;
+    background-color: #c82333;
     color: white;
 }
-
-
 
 .delete:hover {
     color: black;
     font-weight: 800;
     cursor: pointer;
-
 }
+
+
+
+
+
 
 
 
@@ -207,6 +209,135 @@ tr:hover {
     object-fit: cover;
     /* Ensures the image covers the area without distortion */
 }
+
+
+
+
+/* class-manager */
+.btn-success-class {
+    background-color: #c82333;
+    color: white;
+}
+
+.btn-success-class:hover {
+    border-color: #c82333;
+    background-color: white;
+    color: #c82333;
+}
+
+#search-id-input {
+    border: 1px solid #000;
+    border-radius: 8px 0 0 8px;
+}
+
+.input-group .btn {
+    background: #fff;
+    color: #333;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.input-group .btn:hover {
+    background: #f1f1f1;
+    border-color: #000;
+}
+
+.class-search i {
+    color: #c82333;
+}
+
+#search-id-input:focus {
+    border-color: #c82333;
+    box-shadow: 0 0 6px rgba(200, 35, 51, 0.3);
+}
+
+.input-group .btn:active {
+    background-color: #c82333 !important;
+    color: white !important;
+}
+
+.class-search:active i {
+    color: white !important;
+}
+
+.input-group .btn:focus,
+.input-group .btn:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.card-header {
+    background-color: #706f6f;
+    color: #fff;
+    padding: 12px 15px;
+}
+
+.class-name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.class-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.class-left,
+.class-right {
+    flex: 1;
+}
+
+/* Buttons đứng bên phải */
+.class-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 160px;
+}
+
+/* Nút */
+.update-btn {
+    background: #ffce54;
+    border: 1px solid #e0b335;
+    color: #fff;
+}
+
+.view-btn {
+    background: #4a90e2;
+    border: 1px solid #357ab8;
+    color: #fff;
+}
+
+.delete-btn {
+    background: #e74c3c;
+    border: 1px solid #c0392b;
+    color: #fff;
+}
+
+.update-btn:hover {
+    background-color: white;
+    border: 1px solid #e0b335;
+    color: #ffce54;
+}
+
+.view-btn:hover {
+    background: white;
+    border: 1px solid #357ab8;
+    color: #4a90e2;
+}
+
+.delete-btn:hover {
+    background: white;
+    border: 1px solid #c0392b;
+    color: #e74c3c;
+}
+
+
+
 
 
 /* image-manager */
