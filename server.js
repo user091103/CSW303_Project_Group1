@@ -492,7 +492,7 @@ app.post('/userlogin', (req, res) => {
                         return res.redirect('/teacher-home.html');
                     }
                     // Default to admin dashboard
-                    return res.redirect('/admin-home');
+                    return res.redirect('/admin-student-manager.html');
                 });
 
             } else {
