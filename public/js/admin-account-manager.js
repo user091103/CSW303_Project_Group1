@@ -8,10 +8,12 @@ $(document).ready(function () {
                             <tr>
                                 <td>${acc.email}</td>
                                 <td>${acc.role}</td>
-                                <td>
-                                    <button class="btn btn-sm btn-warning edit-btn" data-id="${acc.id}" data-email="${acc.email}" data-role="${acc.role}">Edit</button>
-                                    <button class="btn btn-sm btn-info change-password-btn" data-id="${acc.id}" data-email="${acc.email}">Change Password</button>
-                                    <button class="btn btn-sm btn-danger delete-btn" data-id="${acc.id}">Delete</button>
+                                <td class="account-cells">
+                                    <div class="account-buttons">
+                                        <button class="btn edit-btn-account" data-id="${acc.id}" data-email="${acc.email}" data-role="${acc.role}">Edit</button>
+                                        <button class="btn change-password-btn-account" data-id="${acc.id}" data-email="${acc.email}">Change Password</button>
+                                        <button class="btn delete-btn-account" data-id="${acc.id}">Delete</button>
+                                    </div>
                                 </td>
                             </tr>
                         `);

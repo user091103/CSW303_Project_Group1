@@ -33,30 +33,30 @@ $(document).ready(function () {
         classes.forEach(cls => {
             const classBlock = `
                         <div class="col-md-12 mb-4" data-id="${cls.id}">
-                            <div class="card h-100">
-                                <div class="card-header">
-                                    <h5 class="card-title mb-0">${cls.class_name} (${cls.class_code})</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <p class="card-text mb-1"><b>Course:</b> ${cls.course || 'N/A'} - <b>Level:</b> ${cls.level || 'N/A'}</p>
-                                            <p class="card-text mb-1"><b>Schedule:</b> ${cls.schedule || 'N/A'}</p>
-                                            <p class="card-text mb-1"><b>Teacher:</b> ${cls.teacher || 'N/A'} - <b>Room:</b> ${cls.room || 'N/A'}</p>
-                                            <p class="card-text mb-1"><b>Duration:</b> ${formatDate(cls.start_date)} - ${formatDate(cls.end_date)}</p>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <p class="card-text mb-1"><b>Status:</b> <span class="badge badge-info">${cls.status || 'N/A'}</span></p>
-                                            <p class="card-text mb-1"><b>Progress:</b> ${cls.sessions_done || 0} / ${cls.total_sessions || 'N/A'} sessions</p>
-                                            <p class="card-text mb-1"><b>Students:</b> ${cls.student_count || 0}</p>
-                                            <p class="card-text mb-1"><b>Fee:</b> ${cls.tuition_fee || 'N/A'}</p>
-                                        </div>
+                            <div class="card-header">
+                                <h5 class="class-name mb-0">${cls.class_name} (${cls.class_code})</h5>
+                            </div>
+                            <div class="card p-3">
+                                <div class="class-row">
+                                    <div class="class-left">
+                                        <p><b>Course:</b> ${cls.course || 'N/A'} - <b>Level:</b> ${cls.level}</p>
+                                        <p><b>Schedule:</b> ${cls.schedule}</p>
+                                        <p><b>Teacher:</b> ${cls.teacher} - <b>Room:</b> ${cls.room}</p>
+                                        <p><b>Duration:</b> ${formatDate(cls.start_date)} - ${formatDate(cls.end_date)}</p>
                                     </div>
-                                </div>
-                                <div class="card-footer text-right">
-                                    <button class="btn btn-sm btn-info update-btn">Update</button>
-                                    <button class="btn btn-sm btn-success view-students-btn" data-class-code="${cls.class_code}" data-class-name="${cls.class_name}">View Students</button>
-                                    <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+
+                                    <div class="class-right">
+                                        <p><b>Status:</b> <span class="badge badge-info">${cls.status}</span></p>
+                                        <p><b>Progress:</b> ${cls.sessions_done} / ${cls.total_sessions}</p>
+                                        <p><b>Students:</b> ${cls.student_count}</p>
+                                        <p><b>Fee:</b> ${cls.tuition_fee}</p>
+                                    </div>
+
+                                    <div class="class-buttons">
+                                        <button class="btn update-btn-class">Update</button>
+                                        <button class="btn view-btn-class" data-class-code="${cls.class_code}" data-class-name="${cls.class_name}">View Students</button>
+                                        <button class="btn delete-btn-class">Delete</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -109,7 +109,7 @@ $(document).ready(function () {
     });
 
     // Handle Delete
-    $('#class-container').on('click', '.delete-btn', function () {
+    $('#class-container').on('click', '.delete-btn-class', function () {
         const id = $(this).closest('.col-md-12').data('id');
         if (confirm('Are you sure you want to delete this class?')) {
             $.post('/deleteClass', { id: id }, function (response) {
@@ -120,14 +120,14 @@ $(document).ready(function () {
     });
 
     // Handle showing student list modal
-    $('#class-container').on('click', '.view-students-btn', function () {
+    $('#class-container').on('click', '.view-btn-class', function () {
         // This will redirect to the student management page with a filter
         const classCode = $(this).data('class-code');
         window.location.href = `admin-student-manager.html?view_class=${classCode}`;
     });
 
     // Handle showing update form
-    $('#class-container').on('click', '.update-btn', function () {
+    $('#class-container').on('click', '.update-btn-class', function () {
         const id = $(this).closest('.col-md-12').data('id');
         const classToUpdate = all_classes.find(c => c.id == id);
         if (classToUpdate) {

@@ -73,14 +73,14 @@ main {
     cursor: pointer;
 }
 
-
-
-
-/* management */
 .pagination {
     float: left;
     margin-left: 270px;
 }
+
+
+
+
 
 /* teacher-mamanger */
 button {
@@ -93,7 +93,7 @@ button {
 }
 
 thead tr {
-    background-color: red;
+    background-color: #c82333;
     color: white;
 }
 
@@ -129,22 +129,24 @@ thead tr {
     border: none;
     border-radius: 3px;
     font-weight: 700;
-    color: red;
+    color: #c82333;
 }
 
 tr:hover {
-    background-color: red;
+    background-color: #c82333;
     color: white;
 }
-
-
 
 .delete:hover {
     color: black;
     font-weight: 800;
     cursor: pointer;
-
 }
+
+
+
+
+
 
 
 
@@ -207,6 +209,221 @@ tr:hover {
     object-fit: cover;
     /* Ensures the image covers the area without distortion */
 }
+
+
+
+
+/* class-manager */
+.btn-success-class {
+    background-color: #c82333;
+    color: white;
+}
+
+.btn-success-class:hover {
+    border-color: #c82333;
+    background-color: white;
+    color: #c82333;
+}
+
+#search-id-input {
+    border: 1px solid #000;
+    border-radius: 8px 0 0 8px;
+}
+
+.input-group .btn {
+    background: #fff;
+    color: #333;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.input-group .btn:hover {
+    background: #f1f1f1;
+    border-color: #000;
+}
+
+.class-search i {
+    color: #c82333;
+}
+
+#search-id-input:focus {
+    border-color: #c82333;
+    box-shadow: 0 0 6px rgba(200, 35, 51, 0.3);
+}
+
+.input-group .btn:active {
+    background-color: #c82333 !important;
+    color: white !important;
+}
+
+.class-search:active i {
+    color: white !important;
+}
+
+.input-group .btn:focus,
+.input-group .btn:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.card-header {
+    background-color: #706f6f;
+    color: #fff;
+    padding: 12px 15px;
+}
+
+.class-name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.class-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.class-left,
+.class-right {
+    flex: 1;
+}
+
+.class-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 160px;
+}
+
+.update-btn-class {
+    background: #3ab655;
+    border: 1px solid #29ae2b;
+    color: #fff;
+}
+
+.view-btn-class {
+    background: #4a90e2;
+    border: 1px solid #357ab8;
+    color: #fff;
+}
+
+.delete-btn-class {
+    background: #e74c3c;
+    border: 1px solid #c0392b;
+    color: #fff;
+}
+
+.update-btn-class:hover {
+    background-color: white;
+    border: 1px solid #29ae2b;
+    color: #3ab655;
+}
+
+.view-btn-class:hover {
+    background: white;
+    border: 1px solid #357ab8;
+    color: #4a90e2;
+}
+
+.delete-btn-class:hover {
+    background: white;
+    border: 1px solid #c0392b;
+    color: #e74c3c;
+}
+
+
+
+
+/* account-manager */
+.btn-add-account {
+    background: #c82333;
+    color: white;
+    border: 1px solid #c82333;
+    border-radius: 5px;
+    max-width: 20%;
+    padding: 5px;
+}
+
+.btn-add-account:hover {
+    background-color: white;
+    color: #c82333;
+    border: 1px solid #c82333;
+    border-radius: 5px;
+    max-width: 20%;
+    padding: 5px;
+}
+
+.table thead.account-table tr th {
+    background-color: #706f6f;
+}
+
+#account-table-body td {
+    vertical-align: middle;
+}
+
+.account-cells {
+    width: 1px;
+}
+
+.account-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.account-buttons .btn {
+    display: block;
+    white-space: nowrap;
+}
+
+.table-striped tbody tr:nth-of-type(odd):hover {
+    background-color: #aeadad !important;
+}
+
+.table-striped tbody tr:nth-of-type(even):hover {
+    background-color: #c6424f !important;
+}
+
+.edit-btn-account {
+    background: #3ab655;
+    border: 1px solid #29ae2b;
+    color: #fff;
+}
+
+.change-password-btn-account {
+    background: #4a90e2;
+    border: 1px solid #357ab8;
+    color: #fff;
+}
+
+.delete-btn-account {
+    background: #e74c3c;
+    border: 1px solid #c0392b;
+    color: #fff;
+}
+
+.edit-btn-account:hover {
+    background-color: white;
+    border: 1px solid #29ae2b;
+    color: #3ab655;
+}
+
+.change-password-btn-account:hover {
+    background: white;
+    border: 1px solid #357ab8;
+    color: #4a90e2;
+}
+
+.delete-btn-account:hover {
+    background: white;
+    border: 1px solid #c0392b;
+    color: #e74c3c;
+}
+
+
 
 
 /* image-manager */
