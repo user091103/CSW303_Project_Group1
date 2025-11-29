@@ -120,7 +120,7 @@ $(document).ready(function () {
     });
 
     // Handle showing student list modal
-    $('#class-container').on('click', '.view-students-btn', function () {
+    $('#class-container').on('click', '.view-btn', function () {
         // This will redirect to the student management page with a filter
         const classCode = $(this).data('class-code');
         window.location.href = `admin-student-manager.html?view_class=${classCode}`;
