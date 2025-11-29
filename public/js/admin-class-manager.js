@@ -53,9 +53,9 @@ $(document).ready(function () {
                                     </div>
 
                                     <div class="class-buttons">
-                                        <button class="btn update-btn">Update</button>
-                                        <button class="btn view-btn">View Students</button>
-                                        <button class="btn delete-btn">Delete</button>
+                                        <button class="btn update-btn-class">Update</button>
+                                        <button class="btn view-btn-class" data-class-code="${cls.class_code}" data-class-name="${cls.class_name}">View Students</button>
+                                        <button class="btn delete-btn-class">Delete</button>
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +109,7 @@ $(document).ready(function () {
     });
 
     // Handle Delete
-    $('#class-container').on('click', '.delete-btn', function () {
+    $('#class-container').on('click', '.delete-btn-class', function () {
         const id = $(this).closest('.col-md-12').data('id');
         if (confirm('Are you sure you want to delete this class?')) {
             $.post('/deleteClass', { id: id }, function (response) {
@@ -120,14 +120,14 @@ $(document).ready(function () {
     });
 
     // Handle showing student list modal
-    $('#class-container').on('click', '.view-btn', function () {
+    $('#class-container').on('click', '.view-btn-class', function () {
         // This will redirect to the student management page with a filter
         const classCode = $(this).data('class-code');
         window.location.href = `admin-student-manager.html?view_class=${classCode}`;
     });
 
     // Handle showing update form
-    $('#class-container').on('click', '.update-btn', function () {
+    $('#class-container').on('click', '.update-btn-class', function () {
         const id = $(this).closest('.col-md-12').data('id');
         const classToUpdate = all_classes.find(c => c.id == id);
         if (classToUpdate) {

@@ -291,7 +291,6 @@ tr:hover {
     flex: 1;
 }
 
-/* Buttons đứng bên phải */
 .class-buttons {
     display: flex;
     flex-direction: column;
@@ -299,43 +298,130 @@ tr:hover {
     min-width: 160px;
 }
 
-/* Nút */
-.update-btn {
-    background: #ffce54;
-    border: 1px solid #e0b335;
+.update-btn-class {
+    background: #3ab655;
+    border: 1px solid #29ae2b;
     color: #fff;
 }
 
-.view-btn {
+.view-btn-class {
     background: #4a90e2;
     border: 1px solid #357ab8;
     color: #fff;
 }
 
-.delete-btn {
+.delete-btn-class {
     background: #e74c3c;
     border: 1px solid #c0392b;
     color: #fff;
 }
 
-.update-btn:hover {
+.update-btn-class:hover {
     background-color: white;
-    border: 1px solid #e0b335;
-    color: #ffce54;
+    border: 1px solid #29ae2b;
+    color: #3ab655;
 }
 
-.view-btn:hover {
+.view-btn-class:hover {
     background: white;
     border: 1px solid #357ab8;
     color: #4a90e2;
 }
 
-.delete-btn:hover {
+.delete-btn-class:hover {
     background: white;
     border: 1px solid #c0392b;
     color: #e74c3c;
 }
 
+
+
+
+/* account-manager */
+.btn-add-account {
+    background: #c82333;
+    color: white;
+    border: 1px solid #c82333;
+    border-radius: 5px;
+    max-width: 20%;
+    padding: 5px;
+}
+
+.btn-add-account:hover {
+    background-color: white;
+    color: #c82333;
+    border: 1px solid #c82333;
+    border-radius: 5px;
+    max-width: 20%;
+    padding: 5px;
+}
+
+.table thead.account-table tr th {
+    background-color: #706f6f;
+}
+
+#account-table-body td {
+    vertical-align: middle;
+}
+
+.account-cells {
+    width: 1px;
+}
+
+.account-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.account-buttons .btn {
+    display: block;
+    white-space: nowrap;
+}
+
+.table-striped tbody tr:nth-of-type(odd):hover {
+    background-color: #aeadad !important;
+}
+
+.table-striped tbody tr:nth-of-type(even):hover {
+    background-color: #c6424f !important;
+}
+
+.edit-btn-account {
+    background: #3ab655;
+    border: 1px solid #29ae2b;
+    color: #fff;
+}
+
+.change-password-btn-account {
+    background: #4a90e2;
+    border: 1px solid #357ab8;
+    color: #fff;
+}
+
+.delete-btn-account {
+    background: #e74c3c;
+    border: 1px solid #c0392b;
+    color: #fff;
+}
+
+.edit-btn-account:hover {
+    background-color: white;
+    border: 1px solid #29ae2b;
+    color: #3ab655;
+}
+
+.change-password-btn-account:hover {
+    background: white;
+    border: 1px solid #357ab8;
+    color: #4a90e2;
+}
+
+.delete-btn-account:hover {
+    background: white;
+    border: 1px solid #c0392b;
+    color: #e74c3c;
+}
 
 
 
