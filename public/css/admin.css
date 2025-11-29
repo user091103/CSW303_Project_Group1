@@ -438,6 +438,18 @@ tr:hover {
     border-radius: 5px;
 }
 
+.upload-btn-image {
+    background: #c82333;
+    color: white;
+    border: 1px solid #c82333;
+}
+
+.upload-btn-image:hover {
+    background: white;
+    color: #c82333;
+    border: 1px solid #c82333;
+}
+
 .delete-img-btn {
     position: absolute;
     top: 10px;
