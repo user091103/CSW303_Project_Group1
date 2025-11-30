@@ -71,8 +71,8 @@ function showGradeDetails(studentId, studentName) {
                                 <td>${grade.grade_name}</td>
                                 <td>${grade.score}</td>
                                 <td class="text-right">
-                                    <button class="btn btn-sm btn-info edit-grade-btn">Edit</button>
-                                    <button class="btn btn-sm btn-danger delete-grade-btn">Delete</button>
+                                    <button class="btn btn-sm edit-grade-btn">Edit</button>
+                                    <button class="btn btn-sm delete-grade-btn">Delete</button>
                                 </td>
                             </tr>
                         `;
@@ -94,7 +94,7 @@ function showGradeDetails(studentId, studentName) {
                         <div class="form-row">
                             <div class="col"><input type="text" name="grade_name" class="form-control" placeholder="e.g., Final Exam" required></div>
                             <div class="col"><input type="text" name="score" class="form-control" placeholder="Score" required></div>
-                            <div class="col-auto"><button type="submit" class="btn btn-success">Add Grade</button></div>
+                            <div class="col-auto"><button type="submit" class="btn add-grade-btn">Add Grade</button></div>
                         </div>
                     </form>
                 `;
@@ -165,8 +165,8 @@ $(document).ready(function () {
                         <div class="form-inline">
                             <input type="text" class="form-control form-control-sm mr-2 flex-grow-1" value="${gradeName}">
                             <input type="text" class="form-control form-control-sm mr-2" value="${score}">
-                            <button type="button" class="btn btn-sm btn-success mr-1 save-grade-btn">Save</button>
-                            <button type="button" class="btn btn-sm btn-secondary cancel-edit-btn">Cancel</button>
+                            <button type="button" class="btn btn-sm  mr-1 save-grade-btn">Save</button>
+                            <button type="button" class="btn btn-sm cancel-edit-btn">Cancel</button>
                         </div>
                     </td>
                 `);

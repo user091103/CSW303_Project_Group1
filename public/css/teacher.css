@@ -3,29 +3,55 @@ body {
 }
 
 .navbar {
-    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
 }
 
-/* Left Column - Student List */
-#student-list .list-group-item {
+.back-home-btn {
+    background-color: #ffe5e5;
+    color: #c82333;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.back-home-btn:hover {
+    text-decoration: none;
+    color: #c82333;
+    background-color: #ffe5e5;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+
+
+
+
+/* left-panel */
+#left-panel-list .list-group-item {
     border-left: 4px solid transparent;
     transition: all 0.2s ease-in-out;
 }
 
-#student-list .list-group-item:hover {
-    background-color: #f8f9fa;
-    border-left-color: #ffc107; /* Yellow highlight on hover */
+#left-panel-list .list-group-item:hover {
+    background-color: #d9d9d9 !important;
+    border-left-color: #ffc107 !important;
 }
 
-#student-list .list-group-item.active {
-    background-color: #ffeeba;
-    border-color: #ffc107;
-    color: #856404;
-    border-left-color: #dc3545; /* Red highlight when active */
+#left-panel-list .list-group-item.active {
+    background-color: #9c9c9c !important;
+    border-color: #929292 !important;
+    color: #f8f9fa !important;
+    border-left-color: #dc3545 !important;
 }
 
-/* Right Column - Student Details */
-.placeholder-content {
+
+
+
+
+
+/* right-panel */
+#right-panel .placeholder-content {
     padding: 5rem 2rem;
     border: 2px dashed #e0e0e0;
     border-radius: 8px;
@@ -34,4 +60,65 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+
+.edit-grade-btn {
+    background: #4a90e2;
+    border: 1px solid #357ab8;
+    color: #fff;
+}
+
+.delete-grade-btn {
+    background: #e74c3c;
+    border: 1px solid #c0392b;
+    color: #fff;
+}
+
+.add-grade-btn {
+    background: #4a90e2;
+    border: 1px solid #357ab8;
+    color: #fff;
+}
+
+.save-grade-btn {
+    background: #3ab655;
+    border: 1px solid #29ae2b;
+    color: #fff;
+}
+
+.cancel-edit-btn {
+    background: #808080;
+    border: 1px solid #989898;
+    color: #fff;
+}
+
+.edit-grade-btn:hover {
+    background: white;
+    border: 1px solid #357ab8;
+    color: #4a90e2;
+}
+
+.delete-grade-btn:hover {
+    background: white;
+    border: 1px solid #c0392b;
+    color: #e74c3c;
+}
+
+.add-grade-btn:hover {
+    background: white;
+    border: 1px solid #357ab8;
+    color: #4a90e2;
+}
+
+.save-grade-btn:hover {
+    background-color: white;
+    border: 1px solid #29ae2b;
+    color: #3ab655;
+}
+
+.cancel-edit-btn:hover {
+    background: white;
+    border: 1px solid #989898;
+    color: #808080;
 }
