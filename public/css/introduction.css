@@ -398,6 +398,18 @@ li a:hover {
 
 
 
+#gallery-container img,
+#image-gallery-container img {
+    width: 100%;
+    /* Chiều rộng đầy đủ container */
+    height: 200px;
+    /* Chiều cao cố định, bạn chỉnh theo nhu cầu */
+    object-fit: cover;
+    /* Giữ tỉ lệ hình, cắt phần thừa nếu cần */
+    border-radius: 8px;
+    /* Cho đẹp mắt */
+    display: block;
+}
 
 .other-service {
     text-align: center;

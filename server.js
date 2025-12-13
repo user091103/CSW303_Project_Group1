@@ -533,6 +533,8 @@ app.get('/api/images', (req, res) => {
     });
 });
 
+app.use('/uploads/gallery', express.static(path.join(__dirname, 'uploads/gallery')));
+
 app.post('/api/images/delete', isAuthenticated, isAdmin, (req, res) => {
     const { filename } = req.body;
     if (!filename) {

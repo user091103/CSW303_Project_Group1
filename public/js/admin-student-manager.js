@@ -68,19 +68,25 @@ $(document).ready(function () {
     loadAllStudents();
 
     // Handle Delete
-    $("tbody").on('click', '.delete', function () {
-        let id = $(this).closest('tr').attr("class");
+    $("tbody").on('click', '.delete', function (e) {
+        e.stopPropagation(); // tránh click vào row luôn
+
+        let btn = $(this);
+        let id = btn.closest('tr').attr("class");
+
         $.post('/removestudent', { id: id }, function (data) {
             alert(data.message);
-            loadAllStudents(); // Reload all data
-        });
-    })
-    $("tbody").on('click', '.Delete', function () {
-        updateTable();
-    })
+
+            if (data.success) {
+                btn.closest('tr').remove(); // Xoá tại chỗ
+            }
+        }, 'json');
+    });
+
 
     // When a table row is clicked (but not the delete button)
     $("tbody").on('click', 'tr', function () {
+        e.stopPropagation();
         $('.detail2 .list-group').html('<li class="list-group-item">Loading...</li>');
         $('.detail2 .card-footer').hide();
         $('.detail2').fadeIn();
