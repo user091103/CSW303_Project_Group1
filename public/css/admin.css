@@ -78,6 +78,19 @@ main {
     margin-left: 270px;
 }
 
+#addStudentModal .modal-title {
+    white-space: nowrap;
+    /* Không cho xuống dòng */
+}
+
+#addStudentModal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
 
 
 
@@ -143,6 +156,28 @@ tr:hover {
     cursor: pointer;
 }
 
+#addTeacherModal .modal-title {
+    white-space: nowrap;
+    /* Không cho xuống dòng */
+}
+
+#addTeacherModal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#editTeacherModal .modal-title {
+    white-space: nowrap;
+    /* Không cho xuống dòng */
+}
+
+#editTeacherModal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 
 
@@ -187,6 +222,32 @@ tr:hover {
 .sold {
     margin-left: 45px;
 }
+
+#addBookModal .modal-title {
+    white-space: nowrap;
+    /* Không cho xuống dòng */
+}
+
+#addBookModal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#editBookModal .modal-title {
+    white-space: nowrap;
+    /* Không cho xuống dòng */
+}
+
+#editBookModal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
 
 
 
@@ -334,6 +395,19 @@ tr:hover {
     color: #e74c3c;
 }
 
+#addAccountModal .modal-title {
+    white-space: nowrap;
+    /* Không cho xuống dòng */
+}
+
+#addAccountModal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
 
 
 
@@ -422,6 +496,30 @@ tr:hover {
     border: 1px solid #c0392b;
     color: #e74c3c;
 }
+
+#editAccountModal .modal-title {
+    white-space: nowrap;
+    /* Không cho xuống dòng */
+}
+
+#editAccountModal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#changePasswordModal .modal-title {
+    white-space: nowrap;
+    /* Không cho xuống dòng */
+}
+
+#changePasswordModal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
 
 
 

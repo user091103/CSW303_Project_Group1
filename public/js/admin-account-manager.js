@@ -54,11 +54,30 @@ $(document).ready(function () {
         }).fail(err => alert(err.responseJSON.message));
     });
 
-    $('#account-table-body').on('click', '.edit-btn', function () {
+    // EDIT
+    $('#account-table-body').on('click', '.edit-btn-account', function () {
         $('#edit-account-id').val($(this).data('id'));
         $('#edit-email').val($(this).data('email'));
         $('#edit-role').val($(this).data('role'));
         $('#editAccountModal').modal('show');
+    });
+
+    // CHANGE PASSWORD
+    $('#account-table-body').on('click', '.change-password-btn-account', function () {
+        const accountId = $(this).data('id');
+        const accountEmail = $(this).data('email');
+        $('#change-password-account-id').val(accountId);
+        $('#change-password-email').text(accountEmail);
+        $('#changePasswordModal').modal('show');
+    });
+
+    // DELETE
+    $('#account-table-body').on('click', '.delete-btn-account', function () {
+        if (confirm('Are you sure you want to delete this account?')) {
+            $.post('/api/accounts/delete', { id: $(this).data('id') }, function () {
+                loadAccounts();
+            }).fail(err => alert(err.responseJSON.message));
+        }
     });
 
     $('#editAccountForm').submit(function (e) {
@@ -70,15 +89,6 @@ $(document).ready(function () {
             $('#editAccountModal').modal('hide');
             loadAccounts();
         }).fail(err => alert(err.responseJSON.message));
-    });
-
-    // Show change password modal
-    $('#account-table-body').on('click', '.change-password-btn', function () {
-        const accountId = $(this).data('id');
-        const accountEmail = $(this).data('email');
-        $('#change-password-account-id').val(accountId);
-        $('#change-password-email').text(accountEmail);
-        $('#changePasswordModal').modal('show');
     });
 
     // Handle change password submission
@@ -96,14 +106,6 @@ $(document).ready(function () {
             alert(response.message);
             $('#changePasswordModal').modal('hide').find('form')[0].reset();
         }).fail(err => alert(err.responseJSON.message));
-    });
-
-    $('#account-table-body').on('click', '.delete-btn', function () {
-        if (confirm('Are you sure you want to delete this account?')) {
-            $.post('/api/accounts/delete', { id: $(this).data('id') }, function () {
-                loadAccounts();
-            }).fail(err => alert(err.responseJSON.message));
-        }
     });
 
     loadAccounts();

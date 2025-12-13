@@ -4,32 +4,34 @@ $(document).ready(function () {
     function displayBooks(books) {
         const tbody = $('#book-table-body');
         tbody.empty();
-        if (books.length === 0) {
+        if (!books || books.length === 0) {
             tbody.html('<tr><td colspan="6" class="text-center">No books found.</td></tr>');
             return;
         }
         books.forEach(book => {
             const row = `
-                        <tr data-id="${book.id}">
-                            <td>${book.id}</td>
-                            <td>${book.name}</td>
-                            <td>${book.onhand}</td>
-                            <td>${book.amount}</td>
-                            <td>${book.price}</td>
-                            <td>
-                                <button class="btn btn-sm btn-info edit-btn">Edit</button>
-                                <button class="btn btn-sm btn-danger delete-btn">Delete</button>
-                            </div>
-                        </tr>`;
+                <tr data-id="${book.id}">
+                    <td>${book.id}</td>
+                    <td>${book.name}</td>
+                    <td>${book.onhand}</td>
+                    <td>${book.amount}</td>
+                    <td>${book.price}</td>
+                    <td>
+                        <button class="btn btn-sm btn-info edit-btn">Edit</button>
+                        <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+                    </td>
+                </tr>`;
             tbody.append(row);
         });
     }
 
     function loadAllBooks() {
         $.get("/bookdata", function (data) {
-            all_books = data;
+            all_books = data || [];
             displayBooks(all_books);
-        }, "json");
+        }, "json").fail(function () {
+            console.error('Failed to load book data');
+        });
     }
 
     loadAllBooks();
@@ -38,12 +40,27 @@ $(document).ready(function () {
 
     $('#add-book-form').on('submit', function (e) {
         e.preventDefault();
-        $.post('/addBook', $(this).serialize(), function (response) {
-            alert(response.message);
+        const $form = $(this);
+        const formData = $form.serialize();
+
+        $.post('/addBook', formData, function (response) {
+            alert(response.message || 'Added');
             $('#addBookModal').modal('hide');
-            $(e.target)[0].reset();
-            loadAllBooks();
-        }).fail(() => alert('Error adding book.'));
+
+            // Reset form safely
+            $('#add-book-form')[0].reset();
+
+            // If the backend returns the created book, push it; otherwise reload
+            if (response && response.book) {
+                all_books.push(response.book);
+                displayBooks(all_books);
+            } else {
+                // Fallback: reload list from server
+                loadAllBooks();
+            }
+        }).fail(function () {
+            alert('Error adding book.');
+        });
     });
 
     $('#book-table-body').on('click', '.edit-btn', function () {
@@ -61,26 +78,40 @@ $(document).ready(function () {
 
     $('#edit-book-form').on('submit', function (e) {
         e.preventDefault();
-        $.post('/changeBook', $(this).serialize(), function (response) {
-            alert(response.message);
+        const $form = $(this);
+        $.post('/changeBook', $form.serialize(), function (response) {
+            alert(response.message || 'Updated');
             $('#editBookModal').modal('hide');
+            // refresh list
             loadAllBooks();
-        }).fail(() => alert('Error updating book.'));
+        }).fail(function () {
+            alert('Error updating book.');
+        });
     });
 
     $('#book-table-body').on('click', '.delete-btn', function () {
-        const id = $(this).closest('tr').data('id');
-        if (confirm('Are you sure you want to delete this book?')) {
-            $.post('/deleteBook', { id: id }, function (response) {
-                alert(response.message);
+        const $row = $(this).closest('tr');
+        const id = $row.data('id');
+        if (!confirm('Are you sure you want to delete this book?')) return;
+
+        $.post('/deleteBook', { id: id }, function (response) {
+            alert(response.message || 'Deleted');
+            if (response && response.success) {
+                // remove from local array and UI
+                all_books = all_books.filter(b => b.id != id);
+                $row.fadeOut(180, function () { $(this).remove(); });
+            } else {
+                // fallback: reload list
                 loadAllBooks();
-            }).fail(() => alert('Error deleting book.'));
-        }
+            }
+        }).fail(function () {
+            alert('Error deleting book.');
+        });
     });
 
     $('#search-name-field').on('keyup', function () {
         const searchTerm = $(this).val().toLowerCase();
-        const filteredBooks = all_books.filter(b => b.name.toLowerCase().includes(searchTerm));
+        const filteredBooks = all_books.filter(b => b.name && b.name.toLowerCase().includes(searchTerm));
         displayBooks(filteredBooks);
     });
 

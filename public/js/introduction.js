@@ -142,6 +142,7 @@ $(document).ready(function () {
         });
     }
 
+
     $("#searching").on('click', function () {
         const term = $("#search-name-field").val().toLowerCase().trim();
         if (!term) {
@@ -219,21 +220,27 @@ function loadCourses() {
 loadCourses();
 
 function loadGalleryImages() {
+    const container = $('#image-gallery-container');
+    container.empty();
+
     $.get('/api/images', function (images) {
-        const container = $('#image-gallery-container');
-        container.empty();
-        if (images.length === 0) {
+        if (!images || images.length === 0) {
             container.html('<p class="col-12 text-center">No images in the gallery yet.</p>');
             return;
         }
-        images.forEach(image => {
+
+        images.forEach(img => {
             container.append(`
-                        <div class="col-md-4 col-lg-3 mb-4 gallery-item">
-                            <a href="${image.url}" data-toggle="lightbox" data-gallery="apix-gallery">
-                                <img src="${image.url}" class="img-fluid">
-                            </a>
-                        </div>
-                    `);
+        <div class="col-md-4 col-lg-3 mb-4 gallery-item">
+            <a href="${img.url}" target="_blank" data-toggle="lightbox" data-gallery="apix-gallery">
+                <img src="${img.url}" class="img-fluid" alt="">
+            </a>
+        </div>
+    `);
         });
     });
 }
+
+$(document).ready(function () {
+    loadGalleryImages();
+});
